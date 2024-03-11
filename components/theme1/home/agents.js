@@ -15,23 +15,19 @@ import { useI18n } from '../../../app/providers/i18n';
 
 
 
-const Agents = () => {
+const Agents = ({ data }) => {
+  console.log("🚀 ~ Agents ~ data:", data)
   const theme = "main";
-  const [data, getData, { loading }] = useFetch(agentsList);
+  
   const i18n = useI18n();
-  const path = usePathname();
 
-  useEffect(() => {
-    if (path === "/") {
-      getData({ limit: 4 });
-    }
-  }, [path])
+  
 
   return (
     <div className="py-28 md:py-12">
       <div className="flex flex-col items-center justify-center pt-12">
         {/* <h1 className={`text-${theme}-secondary paragraph_2 text-center`}>Our Team</h1> */}
-        <div className="header_2 dark:text-white text-dark_text py-4 text-center">Meet With Team</div>
+        <div className="header_2 dark:text-white text-dark_text py-4 text-center">{i18n?.t('Meet With Team')}</div>
         <div className="container w-full flex items-center justify-center flex-wrap space-x-9 space-y-9">
           {/* <Slider {...settings} > */}
           {data?.docs?.map((member) => {

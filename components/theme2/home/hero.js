@@ -17,14 +17,17 @@ import FormSelect from '../../form/select';
 import { useRouter } from 'next/navigation';
 import { useI18n } from '../../../app/providers/i18n';
 import Btn from '../../common/btn/btn';
+import { propertyCategories } from '../../../app/helpers/backend';
+import { useFetch } from '../../../app/helpers/hooks';
 
 
 const Hero = ({ home3, jsonData }) => {
-    console.log("🚀 ~ Hero ~ jsonData:", jsonData)
+    const [categories, getCategories] = useFetch(propertyCategories);
     const { getData, setSearch, search } = useProperty();
     const [selectedCountry, setSelectedCountry] = useState('')
     const router = useRouter()
     const i18n = useI18n();
+    const [type, setType] = useState(undefined)
 
     const [auCities, setAuCities] = useState([])
 
@@ -41,17 +44,18 @@ const Hero = ({ home3, jsonData }) => {
             <div className='basis-1/2  bg-secondary'></div>
             {home3 ? (
                 <div className={`basis-1/2 bg-secondary ${home3 ? "pt-20" : ""}`}>
-                    <div className=''>
-                        {/* <img src='/video2.png' alt='' /> */}
+                    {jsonData?.hero_section?.hero_section_image_home3[0]?.url ? <div className=''>
+                        <img src={jsonData?.hero_section?.hero_section_image_home3[0]?.url} alt='' />
+                    </div> : <div className=''>
                         <img src={jsonData?.hero_section?.hero_section_image_home3} alt='' />
-
-                    </div>
+                    </div>}
                 </div>
-            ) : (
-                <div className={`basis-1/2 bg-cover bg-no-repeat object-contain`} style={{ backgroundImage: `url(${jsonData?.hero_section?.hero_section_image})` }}></div>
-            )}
+            ) :
+                jsonData?.hero_section?.hero_section_image[0]?.url ? <div className={`basis-1/2 bg-cover bg-no-repeat object-contain`} style={{ backgroundImage: `url(${jsonData?.hero_section?.hero_section_image[0]?.url})` }}></div> : <div className={`basis-1/2 bg-cover bg-no-repeat object-contain`} style={{ backgroundImage: `url(${jsonData?.hero_section?.hero_section_image})` }}></div>
 
-            <div className={`container absolute left-1/2 block h-full  w-full -translate-x-1/2 transform lg:flex ${home3 ? 'bottom-56' : 'bottom-0'}`}>
+            }
+
+            <div className={`container home_search absolute left-1/2 block h-full  w-full -translate-x-1/2 transform lg:flex ${home3 ? 'bottom-56' : 'bottom-0'}`}>
                 <div className='flex h-[730px] md:h-[965px] basis-1/2 items-center justify-center'>
                     <div className={`${home3 ? "pt-[8rem]" : ""}`}>
                         <h1 className='header_1 py-5 text-white'>{jsonData?.hero_section?.heading}</h1>
@@ -78,35 +82,47 @@ const Hero = ({ home3, jsonData }) => {
                             </div>
                         </div>
                         <div className='my-5 flex text-white'>
-                            {/* {home3 ? (
-                                <a href='' className='header_5 me-6'>
-                                    All{' '}
-                                </a>
-                            ) : (
-                                ''
-                            )} */}
-                            <Link href='/property' onClick={() => {
-                                console.log('clicked')
+                            <button onClick={() => setType(undefined)} className={`header_5 me-6 ${type === undefined ? 'underline text-primary' : ''}`}>
+                                {i18n?.t('All')}
+                            </button>
+
+                            <button onClick={() => {
+                                setType('sale')
                                 getData({ type: 'sale' })
-                            }} className='header_5 me-6'>
+                            }} className={`header_5 me-6 ${type === 'sale' ? 'underline text-primary' : ''}`}>
                                 {i18n.t('Sale')}
-                            </Link>
-                            <Link href='/property' onClick={() => {
+                            </button>
+                            <button onClick={() => {
+                                setType('rent')
                                 getData({ type: 'rent' })
-                            }} className='header_5 me-6'>
+                            }} className={`header_5 me-6 ${type === 'rent' ? 'underline text-primary' : ''}`}>
                                 {i18n.t('Rent')}
-                            </Link>
+                            </button>
                         </div>
                         <div className=' hidden rounded-lg bg-white bg-opacity-40 p-2 text-white'>
                             <Form layout='vertical' onFinish={(values) => {
+                                // console.log(values, type)
                                 getData({
-                                    search: values.location || values.city || values.country
+                                    ...values,
+                                    type: type
                                 })
-                                { (values?.location || values?.city || values?.country) && router.push('/property') }
+                                { (values?.location || values?.city || values?.country || type) && router.push('/property') }
+                                { type === undefined && router.push('/property') }
                             }}>
                                 <FaSearch />
-                                <div className='flex items-center'>
-                                    <FormInput type='text' name={'location'} placeholder={i18n?.t('Enter Location')}></FormInput>
+                                <div className='w-full mt-4'>
+                                    <Form.Item name='category'>
+                                        <Select
+                                            allowClear
+                                            showSearch
+                                            
+                                            placeholder='Select Property Category'
+                                            
+                                            options={categories?.map((item) => {
+                                                return { value: item?._id, label: item?.name }
+                                            })}
+                                        />
+                                    </Form.Item>
                                 </div>
                                 <div className='flex items-center'>
                                     <span>
@@ -164,19 +180,48 @@ const Hero = ({ home3, jsonData }) => {
                 <div className={`w-full rounded-md p-2 lg:p-5 text-white shadow-md ${home3 ? 'lg:w-[75%] bg-[#365C70] bg-gradient-to-b from-[#668391] to-[#184359]' : 'lg:w-[75%] bg-[#365C70] bg-opacity-70'}`}>
                     <div className=''>
                         <Form layout='vertical' autoComplete='off' onFinish={(values) => {
-                            getData({
-                                search: values.location || values.city || values.country
-                            })
-                            { (values?.location || values?.city || values?.country) && router.push('/property') }
+                            console.log(values, type)
+                            // getData({
+                            //     search: values.location || values.city || values.country
+                            // })
+                            // { (values?.location || values?.city || values?.country) && router.push('/property') }
                             // setSearch(!search)
+                            getData({
+                                ...values,
+                                type: type
+                            })
+                            { (values?.location || values?.city || values?.country || type) && router.push('/property') }
+                            { type === undefined && router.push('/property') }
                         }} className='filter-home'>
                             <div className='grid grid-cols-3 items-center justify-between md:flex'>
                                 <div className='paragraph_2 gap-2 flex items-center px-5  md:w-auto w-full'>
                                     <FaSearch className='text-white' />
-
-                                    <Form.Item autoComplete='off' name={'location'} className=' w-32 md:w-44 text-white'>
-                                        <input type='text' name={'location'} placeholder={i18n?.t('Search')} className='bg-transparent w-full outline-none' />
+                                    <div className='w-full'>
+                                    <Form.Item name='category'>
+                                        <Select
+                                            allowClear
+                                           
+                                            showSearch
+                                            // style={{
+                                            //     width: '100%',
+                                            //     borderRadius: '0px',
+                                            // }}
+                                            placeholder='Select Property Category'
+                                            // optionFilterProp='children'
+                                            // filterOption={(input, option) =>
+                                            //     (option?.label ?? '').includes(input)
+                                            // }
+                                            // filterSort={(optionA, optionB) =>
+                                            //     (optionA?.label ?? '')
+                                            //         .toLowerCase()
+                                            //         .localeCompare((optionB?.label ?? '').toLowerCase())
+                                            // }
+                                            options={categories?.map((item) => {
+                                                return { value: item?._id, label: item?.name }
+                                            })}
+                                        />
                                     </Form.Item>
+                                </div>
                                 </div>
                                 <div className='paragraph_2 flex items-center border-gray-400 px-5  w-full md:border-l-2 md:border-r-2'>
                                     <FaLocationDot className='text-white' />

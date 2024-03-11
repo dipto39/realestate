@@ -53,11 +53,14 @@ const Blogs = ({ theme1 }) => {
                                 </div>
                             </div>
                             <div className='flex items-center justify-between py-5'>
-                                <p
-                                    className={`header_4 !font-bold capitalize ${theme1 ? 'dark:text-white text-dark_text' : 'text-dark_text'}`}
-                                >
-                                    {blog?.title?.length > 60 ? blog?.title.slice(0, 60) + '...' : blog?.title}
-                                </p>
+                                <Link href={`/news/view/${blog?._id}`}>
+
+                                    <p
+                                        className={`header_4 !font-bold capitalize ${theme1 ? 'dark:text-white text-dark_text' : 'text-dark_text'}`}
+                                    >
+                                        {blog?.title?.length > 60 ? blog?.title.slice(0, 60) + '...' : blog?.title}
+                                    </p>
+                                </Link>
                                 <Link
                                     href={`/news/view/${blog?._id}`}
                                     className='ml-auto flex h-8 w-8 items-center justify-center rounded-full border border-secondary_text text-secondary_text  transition-all hover:bg-hover_color hover:text-white'

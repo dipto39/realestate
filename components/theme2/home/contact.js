@@ -36,7 +36,7 @@ const Contact = () => {
 
                 <div className='container mx-auto'>
                     <div className='mt-3 md:mt-16 flex items-center max-w-[1216px] flex-col justify-between rounded-md p-5 gap-5 shadow-lg lg:flex-row'>
-                        <div className='relative mt-6 w-full rounded-md bg-secondary p-5 lg:mt-0 lg:w-[550px] lg:h-[630px] mr-8 lg:mr-0'>
+                        <div className='relative mt-6 w-full rounded-md bg-secondary p-5 lg:mt-0 lg:w-[550px] lg:h-[630px] md:mr-8 lg:mr-0'>
                             <div className='flex h-full flex-col justify-between gap-6 z-20'>
                                 <div className='mt-4'>
                                     <h1 className='header_3 text-white'>{i18n?.t('Contact Information')}</h1>
@@ -93,11 +93,11 @@ const Contact = () => {
                                             <PhoneNumberInput name='phone' required label={i18n?.t('Phone Number')} className='placeholder:paragraph_3 w-full !border-b !border-b-secondary_text py-1 text-dark_text placeholder-secondary_text transition-colors focus:border-b-2 focus:outline-none' />
                                         </div>
                                         <div className='lg:w-[422px]'>
-                                            <FormInput name='company' placeholder={i18n?.t('Company Name')} label={i18n?.t('Company Name')} className='placeholder:paragraph_3 w-full !border-b !border-b-secondary_text py-1 text-dark_text placeholder-secondary_text transition-colors focus:border-b-2 focus:outline-none' />
+                                            <FormInput name='subject' placeholder={i18n?.t('Subject')} label={i18n?.t('Subject')} className='placeholder:paragraph_3 w-full !border-b !border-b-secondary_text py-1 text-dark_text placeholder-secondary_text transition-colors focus:border-b-2 focus:outline-none' />
                                         </div>
                                     </div>
                                     <div className='mt-2'>
-                                        <FormInput name='message' placeholder={i18n?.t('Message')} label={i18n?.t('Message')} textArea className='placeholder:paragraph_3 w-full !border-b !border-b-secondary_text py-1 text-dark_text placeholder-secondary_text transition-colors focus:border-b-2 focus:outline-none' />
+                                        <FormInput name='message' required placeholder={i18n?.t('Message')} label={i18n?.t('Message')} textArea className='placeholder:paragraph_3 w-full !border-b !border-b-secondary_text py-1 text-dark_text placeholder-secondary_text transition-colors focus:border-b-2 focus:outline-none' />
                                     </div>
                                 </div>
                                 {/* <button type='submit' className='header_5 rounded-sm  rounded-tr-3xl bg-primary px-7 py-4 text-lg text-white transition-all ease-in-out hover:bg-hover_color flex justify-center items-center w-fit'>{i18n?.t('Send Message')}</button> */}

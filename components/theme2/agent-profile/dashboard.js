@@ -12,7 +12,7 @@ function Dashboard({ credits }) {
 
     return (
         <>
-            <h1 className='header_4_bold pb-3 text-dark_text'>{i18n?.t(`Your current credit's`)}: {credits ? credits : 0}</h1>
+            <h1 className='header_4_bold pb-3 text-dark_text'>{i18n?.t(`Your current credit`)}: {credits ? credits : 0}</h1>
             <div className=' grid grid-cols-2 gap-8 '>
                 <div className='relative rounded bg-[#1CAF65] px-6 py-5 text-white'>
                     <h1 className='header_2'>{dashboard?.total_property}</h1>

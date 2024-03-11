@@ -13,6 +13,7 @@ import Btn from '../../common/btn/btn';
 const About = () => {
     const { search, setSearch } = useProperty();
     const [about, getAbout] = useFetch(fetchSinglePage, {}, false)
+    console.log("🚀 ~ About ~ about:", about)
     const i18n = useI18n();
     useEffect(() => {
         getAbout({
@@ -21,9 +22,10 @@ const About = () => {
     }, [])
 
     const jsonData = JSON.parse(about?.content || '{}')
+    console.log("🚀 ~ About ~ jsonData:", jsonData)
 
     return (
-        <div className='aboutus relative py-32'>
+        <div className='aboutus relative py-20 md:py-32'>
             <div className='container mx-auto '>
                 <img className='absolute left-2 top-0 -z-10' src='./dot_small.png' alt='' />
                 <div className='justify-between items-center lg:flex gap-6'>
@@ -37,21 +39,19 @@ const About = () => {
                             {/* <div className='absolute left-4 top-10 hidden lg:block'>
                                 <img className='object-cover' src={jsonData?.plan_design?.plan_design_image[0]} alt='' />
                             </div> */}
-                            {jsonData?.plan_design?.plan_design_image[0]?.url ?
-                                <img className='h-full w-full lg:h-auto lg:w-auto' src={jsonData?.plan_design?.plan_design_image[0]?.url} alt="" />
-                                :
-                                <img className='w-full' src={jsonData?.plan_design?.plan_design_image[0]} alt="" />
+                            {
+                                jsonData?.plan_design?.plan_design_image1 && jsonData?.plan_design?.plan_design_image1[0]?.url ?
+                                    <img className='h-full w-full lg:h-auto lg:w-auto' src={jsonData?.plan_design?.plan_design_image1[0]?.url} alt="" />
+                                    :
+                                    jsonData?.plan_design?.plan_design_image1 ? <img className='w-full' src={jsonData?.plan_design?.plan_design_image1} alt="" /> : ""
                             }
                             <div className=' left-72 top-10 z-20 lg:absolute '>
-                                {/* <img
-                                    className='h-full w-full lg:h-auto lg:w-auto'
-                                    src={jsonData?.plan_design?.plan_design_image[1]}
-                                    alt=''
-                                /> */}
-                                {jsonData?.plan_design?.plan_design_image[1]?.url ?
-                                    <img className='h-full w-full lg:h-auto lg:w-auto' src={jsonData?.plan_design?.plan_design_image[1]?.url} alt="" />
-                                    :
-                                    <img className='w-full' src={jsonData?.plan_design?.plan_design_image[1]} alt="" />
+
+                                {
+                                    jsonData?.plan_design?.plan_design_image2 && jsonData?.plan_design?.plan_design_image2[0]?.url ?
+                                        <img className='h-full w-full lg:h-auto lg:w-auto' src={jsonData?.plan_design?.plan_design_image2[0]?.url} alt="" />
+                                        :
+                                        jsonData?.plan_design?.plan_design_image2 ? <img className='w-full' src={jsonData?.plan_design?.plan_design_image2 || "/dot.png"} alt="" /> : ""
                                 }
 
                             </div>

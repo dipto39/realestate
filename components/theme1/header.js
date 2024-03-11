@@ -87,7 +87,6 @@ const Header = ({ theme1, theme3 }) => {
   </Menu>
 
   const [settings, getSettings] = useFetch(fetchSiteSettings)
-  console.log("🚀 ~ Header ~ settings:", settings)
 
   const items = [
     {
@@ -97,7 +96,7 @@ const Header = ({ theme1, theme3 }) => {
           ? "/admin"
           : user?.role === "agent"
             ? "/agent-profile"
-            : "/"
+            : "/profile"
       }>
         {i18n?.t('Dashboard')}
       </Link>,
@@ -266,6 +265,9 @@ const Header = ({ theme1, theme3 }) => {
               </Link>
               <Link href={'/property'} className="paragraph_1 flex cursor-pointer items-center space-x-2 text-dark_text transition-all ease-in-out hover:text-hover_color">
                 {i18n?.t('Properties')}
+              </Link>
+              <Link href={'/pricing-plan'} className="paragraph_1 flex cursor-pointer items-center space-x-2 text-dark_text transition-all ease-in-out hover:text-hover_color">
+                {i18n?.t('Pricing')}
               </Link>
               <Dropdown overlay={menu}>
                 <a className="paragraph_1 flex cursor-pointer items-center space-x-2 text-dark_text transition-all ease-in-out hover:text-hover_color" onClick={(e) => e.preventDefault()}>

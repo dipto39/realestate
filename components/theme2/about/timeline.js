@@ -10,7 +10,7 @@ import { FaAward } from 'react-icons/fa';
 //   const aboutImgUrl2 = aboutImage2 && aboutImage2[0].url ? aboutImage2[0].url : aboutImage2;
 
 const Timeline = ({ jsonData }) => {
-    console.log("🚀 ~ Timeline ~ jsonData:", jsonData?.sweet_journey?.sweet_journey_image[0]?.url)
+    console.log("🚀 ~ Timeline ~ jsonData:", jsonData)
     return (
         <section className='relative py-20'>
             <div className="absolute top-5 left-1 -z-10">
@@ -22,12 +22,12 @@ const Timeline = ({ jsonData }) => {
             <div className=" container">
                 <div className="lg:flex gap-20 ">
                     <div className="basis-2/5 relative">
-                        {jsonData?.sweet_journey?.sweet_journey_image[0]?.url ? 
+                        {jsonData?.sweet_journey?.sweet_journey_image && jsonData?.sweet_journey?.sweet_journey_image[0]?.url ? 
                         <div className="w-full h-full">
                             <img className='w-full' src={jsonData?.sweet_journey?.sweet_journey_image[0]?.url} alt="" />
                            </div>  :
                         <div className="w-full h-full">
-                            <img className='w-full' src={ jsonData?.sweet_journey?.sweet_journey_image } alt="" />
+                            <img className='w-full' src={jsonData?.sweet_journey?.sweet_journey_image } alt="" />
                         </div>
                         }
                         <div className="p-5 bg-white rounded-full absolute top-16 -right-12 lg:block hidden">

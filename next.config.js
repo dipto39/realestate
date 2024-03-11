@@ -3,9 +3,9 @@ const nextConfig = {
   env: {
     backend_url:
       process.env.NODE_ENV === "production"
-        ? "https://realstatelaravel.appstick.com.bd/"
-        : "https://realstatelaravel.appstick.com.bd/",
-    is_laravel_backend: 'true',
+        ? "https://real-state-express.vercel.app/"
+        : "https://realstateexpress.appstick.com.bd/",
+    is_laravel_backend: 'false',
   },
   images: {
     domains: ['appstick-resources.s3.ap-southeast-1.amazonaws.com'],
@@ -14,3 +14,6 @@ const nextConfig = {
 };
 
 module.exports = nextConfig
+
+//http://localhost:4200/
+//https://real-state-express.vercel.app/

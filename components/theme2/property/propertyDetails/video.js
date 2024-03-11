@@ -10,7 +10,7 @@ const Video = ({ singleData }) => {
             <div className='mt-6'>
 
                 {singleData?.video?.endsWith(".mp4") && (
-                    <video width="100%" height="600" controls>
+                    <video className='w-full h-[380px]' controls>
                         <source src={singleData?.video} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>

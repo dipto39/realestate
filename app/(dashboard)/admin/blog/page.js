@@ -2,7 +2,7 @@
 import React from 'react';
 import PageTitle from '../../../../components/common/title';
 import Table, { TableImage } from '../../../../components/common/table';
-import { Switch } from 'antd';
+import { Switch, Tooltip } from 'antd';
 import { useActionConfirm, useFetch } from '../../../helpers/hooks';
 import { useRouter } from 'next/navigation';
 import { useI18n } from '../../../providers/i18n';
@@ -25,7 +25,17 @@ const AdminBlogCreate = () => {
                 </div>
             ),
         },
-        { text: "Title", dataField: "title" },
+        {
+            text: "Title", dataField: "title",
+            formatter: (title) => <span className=''>{
+                <Tooltip title={title?.length > 30 ? title : ''}
+                >
+                    <span className='cursor-help'>
+                        {title?.length > 30 ? title?.slice(0, 30) + '...' : title}
+                    </span>
+                </Tooltip>
+            }</span>,
+        },
         {
             text: "Category", dataField: "category", formatter: (_, d) => <span>{d?.category?.name}</span>,
         },

@@ -36,6 +36,7 @@ const data = [
 
 const Review = ({singleData}) => {
     const [review, getReview] = useFetch(getPropertyReview);
+    console.log("🚀 ~ Review ~ review:", review)
     const i18n = useI18n();
     useEffect(() => {
         getReview({
@@ -47,8 +48,9 @@ const Review = ({singleData}) => {
         <div className='mt-12'>
             <div className='rounded-md bg-white p-5'>
                 <p className='header_7 text-dark_text'>
-                    {(review?.docs?.reduce((a, b) => a + b?.rating, 0) / review?.docs?.length).toFixed(1)}(
-                    { review?.docs?.length} {i18n?.t('Reviews')})
+                    
+                    {(review?.docs?.length ? review?.docs?.reduce((a, b) => a + b?.rating, 0) / review?.docs?.length  : 0 ).toFixed(1)} (
+                    { review?.docs?.length ? review?.docs?.length : 0} {i18n?.t('Reviews')})
                 </p>
                 { review?.docs?.map((item) => (
                     <ReviewItem item={item} key={item.id} />

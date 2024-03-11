@@ -1,26 +1,10 @@
 "use client"
 import Link from 'next/link';
 import React from 'react';
-import { AiFillDashboard, AiOutlineHome } from 'react-icons/ai';
-import {
-    FaArrowDown,
-    FaArrowUp,
-    FaCreditCard,
-    FaEdit,
-    FaHome,
-    FaPlus,
-    FaSearch,
-    FaTrash,
-    FaTrashAlt,
-    FaUserAlt,
-} from 'react-icons/fa';
-import { FaHouseCircleCheck, FaLocationDot, FaRotate, FaShield } from 'react-icons/fa6';
-import { FiLogOut, FiSettings } from 'react-icons/fi';
+import { FaPlus } from 'react-icons/fa';
 import { delAgentProperty, getAllProperty, toggleAdminPropertyActive } from '../../../app/helpers/backend';
 import { useActionConfirm, useFetch } from '../../../app/helpers/hooks';
-import Image from 'next/image';
-import dayjs from 'dayjs';
-import Button from '../../common/button';
+
 import { useRouter } from 'next/navigation';
 import FrontTable from '../../common/fronTable';
 import { statusClass } from '../../../app/helpers/utils';
@@ -76,12 +60,10 @@ function AgentProperties({ user, active, setActive }) {
 
     return (
         <div>
-            <FrontTable columns={columns} data={data} pagination={true}
+            {data ? <FrontTable columns={columns} data={data} pagination={true}
                 indexed={true}
                 action={
-                    // <Button onClick={() => setActive('add-property')}>
-                    //     Add New 
-                    // </Button>
+
                     <button onClick={() => {
                         setActive('add-property')
                         if (!user?.activeSubscription?.active) {
@@ -102,7 +84,14 @@ function AgentProperties({ user, active, setActive }) {
                 }}
                 onDelete={delAgentProperty}
                 onReload={getData}
-                loading={loading} />
+                loading={loading} /> : <div className='m-7 rounded-lg p-8 shadow-[0px_0px_10px_rgba(0,0,0,0.2)] '>
+                <h1 className='header_4_bold pb-1 text-dark_text'>{i18n?.t('Properties')}</h1>
+                <hr className='h-[2px] w-full bg-gray-200' />
+                <div className='pt-10 text-center'>
+                    <p className='paragraph_1'>{i18n?.t('Oops')}!</p>
+                    <p className='paragraph_3 text-secondary_text'>{i18n?.t('No properties')}</p>
+                </div>
+            </div>}
         </div>
     );
 }

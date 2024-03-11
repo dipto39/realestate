@@ -68,6 +68,7 @@ function Signup() {
                 } else {
                   message.success(`${i18n?.t('OTP sent to')} ${values?.email || values?.phone}`)
                   setOtpModal(true);
+                  confirm(`${i18n?.t('Verification code sent to')} ${data}`)
                   values.role = value || 'user';
                   setRegistrationValues(values);
                 }
@@ -91,7 +92,7 @@ function Signup() {
               <div className="lg:w-[648px] w-full signup">
                 <Form.Item
                   name="name"
-                  label={i18n?.t('User Name')}
+                  label={i18n?.t('Name')}
                   rules={[{ required: true, message: i18n?.t('Please input your User Name!') }]}
 
                 >

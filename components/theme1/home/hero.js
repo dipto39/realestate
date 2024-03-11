@@ -28,11 +28,15 @@ const Hero = ({ theme1, jsonData }) => {
                 </div>
                 <div>
                     <div className='relative order-2 md:w-4/5 '>
-                        <img
+                        { jsonData?.hero_section?.hero_section_image_home2[0]?.url ? <img
                             className='h-auto object-fill  md:h-[486px] lg:h-[759px]'
-                            src={jsonData?.hero_section?.hero_section_image_home2}
+                            src={jsonData?.hero_section?.hero_section_image_home2[0]?.url}
                             alt=''
-                        />
+                        />: <img
+                        className='h-auto object-fill  md:h-[486px] lg:h-[759px]'
+                        src={jsonData?.hero_section?.hero_section_image_home2}
+                        alt=''
+                    />}
                         {/* <img
                                 className='h-auto object-fill  md:h-[486px] lg:h-[759px]'
                                 src={theme1 ? '/Hero1.png' : ''}

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import { Form, Modal } from 'antd';
+import { Form, Modal, Tooltip } from 'antd';
 import { useAction, useFetch } from '../../../helpers/hooks';
 import { delFaq, fetchFaq, postFaq } from '../../../helpers/backend';
 import { useI18n } from '../../../providers/i18n';
@@ -16,7 +16,17 @@ const AdminFaq = () => {
     const i18n = useI18n()
     const columns = [
         { text: "Question", dataField: "question" },
-        { text: "Answer", dataField: "answer" },
+        {
+            text: "Answer", dataField: "answer",
+            formatter: (answer) => <span className=''>{
+                <Tooltip title={answer?.length > 40 ? answer : ''}
+                >
+                    <span className='cursor-help'>
+                        {answer?.length > 40 ? answer?.slice(0, 40) + '...' : answer}
+                    </span>
+                </Tooltip>
+            }</span>,
+        },
 
     ];
     return (

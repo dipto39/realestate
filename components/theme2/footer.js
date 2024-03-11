@@ -29,9 +29,9 @@ const Footer = () => {
         <footer className='bg-secondary pt-16'>
             <div className='container'>
                 <div className='flex flex-wrap items-center justify-between space-y-4'>
-                    <div className=' w-full md:w-1/2 '>
+                    <div className='space-y-3 md:space-y-0 w-full md:w-1/2 '>
                         <h3 className='header_3 text-white'>{i18n?.t('Become a Agent')}</h3>
-                        <div className='mt-4 flex items-center'>
+                        <div className='md:mt-4 flex items-center'>
                             <div className='h-[2px] w-2/5 bg-secondary_text'></div>
                             <p className='header_5 pl-2 text-white'>{i18n?.t('Sign up Today')}</p>
                             <Link

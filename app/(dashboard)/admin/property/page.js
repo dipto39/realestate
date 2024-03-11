@@ -2,7 +2,7 @@
 import React from 'react';
 import PageTitle from '../../../../components/common/title';
 import Table, { TableImage } from '../../../../components/common/table';
-import { Select, Switch } from 'antd';
+import { Select, Switch, Tooltip } from 'antd';
 import { useRouter } from 'next/navigation';
 import { useI18n } from '../../../providers/i18n';
 import { useActionConfirm, useFetch } from '../../../helpers/hooks';
@@ -24,7 +24,14 @@ const AdminPropertyList = () => {
             formatter: (_, d) => (
                 <div className="flex space-x-1 gap-x-3">
                     <TableImage url={d?.thumb_image} />
-                    <span className="">{d?.title}</span>
+                    <span className="">{
+                        <Tooltip title={d?.title?.length > 30 ? d?.title : ''}
+                        >
+                            <span className='cursor-help'>
+                                {d?.title?.length > 30 ? d?.title?.slice(0, 30) + '...' : d?.title}
+                            </span>
+                        </Tooltip>
+                    }</span>
                 </div>
             ),
         },

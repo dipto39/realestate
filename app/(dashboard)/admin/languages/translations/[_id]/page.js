@@ -429,6 +429,7 @@ const Translations = ({ params }) => {
         { name: "m" },
         { name: "Agent’s Details" },
         { name: "Please enter a valid email address" },
+        { name: "Meet With Team" },
     ];
 
     const handleSubmit = async values => {

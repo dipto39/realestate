@@ -120,10 +120,10 @@ const Header = () => {
                         </div>
 
                         <div className="flex items-center gap-x-6">
-                            <div className="flex items-center gap-1 hover:text-primary">
+                            <Link href="/" target="_blank" className="flex items-center gap-1 hover:text-primary">
                                 <ImExit />
-                                <Link href="/"> Live Site</Link>
-                            </div>
+                                Live Site
+                            </Link>
                             <div>
                                 <Select
                                     defaultValue={

@@ -14,21 +14,22 @@ import { useI18n } from '../../../app/providers/i18n';
 const EditProfile = ({ setActive, active }) => {
     const [form] = Form.useForm();
     const { user, getUser } = useUser()
+    console.log("🚀 ~ EditProfile ~ user:", user)
     const { push } = useRouter()
     const i18n = useI18n()
 
     useEffect(() => {
         form.setFieldsValue({
             ...user,
-            image: [
+            image: user?.image ? [
                 {
                     uid: '-1',
                     name: 'image.png',
                     status: 'done',
-                    url: user?.image || '',
+                    url: user?.image,
                 },
-            ]
-            ,
+            ] : ''
+            
         })
     }, [user?._id])
 

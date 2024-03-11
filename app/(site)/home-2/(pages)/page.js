@@ -10,16 +10,27 @@ import Places from '../../../../components/theme1/home/places';
 import Testimonial from '../../../../components/theme1/home/testimonial';
 import WhoWeAre from '../../../../components/theme1/home/whoWeAre';
 import { useFetch } from '../../../helpers/hooks';
-import { fetchSinglePage } from '../../../helpers/backend';
+import { agentsList, fetchSinglePage } from '../../../helpers/backend';
+import { usePathname } from 'next/navigation';
 
 const Home = () => {
     const [home, getHome] = useFetch(fetchSinglePage, {}, false)
-
+    const [data, getData, { loading }] = useFetch(agentsList, {}, false);
+    const path = usePathname();
     useEffect(() => {
         getHome({
             slug: 'home'
         })
     }, [])
+
+    useEffect(() => {
+        if (path === "/") {
+            getData({ limit: 4 });
+        }
+        if (path === "/home-2") {
+            getData({ limit: 4 });
+        }
+    }, [path]);
 
     const jsonData = JSON.parse(home?.content || '{}')
     return (
@@ -28,10 +39,10 @@ const Home = () => {
             <Places jsonData={jsonData} theme1={true} />
             <WhoWeAre theme1={true} />
             <HowItWorks theme1={true} />
-            <Featured theme1={true} />
+            <Featured loading={loading} theme1={true} />
             {/* <FindProperty theme1={true} />  */}
             <Testimonial theme1={true} />
-            <Agents />
+            <Agents data={data} />
             <Blogs theme1={true} />
         </main>
     );

@@ -38,6 +38,12 @@ export function Header() {
             dropDown: false,
         },
         {
+            name: i18n?.t('Pricing'),
+            href: '/pricing-plan',
+            dropDown: false,
+        },
+
+        {
             name: i18n?.t('Pages'),
             href: '',
             dropDown: true,

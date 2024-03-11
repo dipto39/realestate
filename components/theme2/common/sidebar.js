@@ -4,6 +4,8 @@ import { FiSearch } from 'react-icons/fi';
 import { Button, Radio, Col, Form, Row, Select, Slider, Input } from 'antd';
 import FormInput from '../../form/input';
 import { AiOutlineClear } from 'react-icons/ai';
+import { propertyCategories } from '../../../app/helpers/backend';
+import { useFetch } from '../../../app/helpers/hooks';
 
 const options = [
     {
@@ -37,6 +39,7 @@ const onChange = (checkedValues) => {
 };
 
 const Sidebar = ({ data, getData }) => {
+    const [categories, getCategories] = useFetch(propertyCategories);
 
     const [form] = Form.useForm();
 
@@ -150,6 +153,50 @@ const Sidebar = ({ data, getData }) => {
                                         { value: 'rent', label: 'Rent' },
                                         { value: 'sale', label: 'Sale' },
                                     ]}
+                                />
+                            </Form.Item>
+                        </div>
+                    </div>
+                    <div className="mt-8">
+                        <div className='paragraph_9 text-dark_text items-center flex justify-between'>
+                            <h3 className=''>Property Category</h3>
+                            <AiOutlineClear onClick={() => {
+                                getData({ 
+                                    category: undefined,
+                                })
+                                form.resetFields(['category'])
+                                setActive('')
+
+                            }} size={20} color='gray' className='cursor-pointer' />
+                        </div>
+                        <div className='w-full mt-4'>
+                            <Form.Item name='category'>
+                                <Select
+                                    allowClear
+                                    onChange={(e) => {
+                                        getData({
+                                            category: e
+                                        })
+                                        setActive('category')
+                                    }}
+                                    showSearch
+                                    style={{
+                                        width: '100%',
+                                        borderRadius: '0px',
+                                    }}
+                                    placeholder='Select Property Category'
+                                    optionFilterProp='children'
+                                    filterOption={(input, option) =>
+                                        (option?.label ?? '').includes(input)
+                                    }
+                                    filterSort={(optionA, optionB) =>
+                                        (optionA?.label ?? '')
+                                            .toLowerCase()
+                                            .localeCompare((optionB?.label ?? '').toLowerCase())
+                                    }
+                                    options={categories?.map((item) => {
+                                        return { value: item?._id, label: item?.name }
+                                    })}
                                 />
                             </Form.Item>
                         </div>

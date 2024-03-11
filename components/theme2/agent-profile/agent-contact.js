@@ -27,14 +27,21 @@ const AgentContact = () => {
 
     return (
         <div>
-            <FrontTable columns={columns} data={contact?.docs} noActions={false} onView={
+            {contact?.docs ? <FrontTable columns={columns} data={contact?.docs} noActions={false} onView={
                 (data) => {
                     setShow(true)
                     return getContactDetail({ _id: data?._id })
                 }
             } indexed={true} onDelete={agentContactDelete} onReload={getContact} loading={loading}
 
-            ></FrontTable>
+            ></FrontTable> : <div className=' rounded-lg p-8 shadow-[0px_0px_10px_rgba(0,0,0,0.2)] '>
+                <h1 className='header_4_bold pb-1 text-dark_text'>{i18n?.t('Contact')}</h1>
+                <hr className='h-[2px] w-full bg-gray-200' />
+                <div className='pt-10 text-center'>
+                    <p className='paragraph_1'>{i18n?.t('Oops')}!</p>
+                    <p className='paragraph_3 text-secondary_text'>{i18n?.t('No contact')}</p>
+                </div>
+            </div>}
             <Modal open={show} onCancel={() => {
                 setShow(false)
                 getContact()

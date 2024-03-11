@@ -473,3 +473,11 @@
     border-radius: 4px !important;
   }
 }
+@media only screen and (max-width: 768px ) {
+  .home_search {
+    .ant-select {
+      margin-top: 1px !important;
+    }
+  }
+  
+}

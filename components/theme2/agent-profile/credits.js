@@ -57,7 +57,7 @@ function Credits({ credits }) {
                 >
                     {data?.docs?.map((item, i) => (
                         <SwiperSlide key={i} className='mb-12'>
-                            <div className='relative rounded bg-slate-50 p-8 text-center hover:bg-white hover:shadow-xl'>
+                            <div className='relative rounded bg-slate-50 font-libre_baskerville p-8 text-center hover:bg-white hover:shadow-xl'>
                                 <h1 className='header_7 text-dark_text'>{i18n?.t('Plan Name')} <span className='capitalize'>{item?.subscription?.name}</span></h1>
                                 <h1 className='paragraph_1 text-secondary_text'>{i18n?.t('ID')}: {item?.uid}</h1>
                                 <h1 className='paragraph_1 my-3'>Purchased on <span className='capitalize'>{dayjs(item?.createdAt).format("DD MMM YYYY")}</span></h1>

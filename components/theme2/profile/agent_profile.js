@@ -10,7 +10,7 @@ import AgentProperties from '../agent-profile/properties'
 import ResetPassword from './resetPassword'
 import AddProperty from '../agent-profile/addProperty'
 import { useUser } from '../../../app/contexts/user'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { message } from 'antd'
 import EditProfile from './edit-profile'
 import ViewProperty from '../agent-profile/viewProperty'
@@ -70,6 +70,7 @@ function Agent_Profile() {
             icon: <FiLogOut></FiLogOut>
         }
     ]
+    const path = usePathname();
 
     const prams = useSearchParams().get("_id");
     console.log("🚀 ~ Agent_Profile ~ prams:", prams)
@@ -107,7 +108,7 @@ function Agent_Profile() {
                                 <div className='text-primary text-3xl cursor-pointer'><FaEdit onClick={() => setActive('setting')}></FaEdit></div>
                             </div>
                             {user?.image && <div className="max-w-[200px]">
-                                <img className='w-full h-full rounded' src={user?.image && user?.image} alt="" />
+                               { user?.image ? <img className='w-full h-full rounded' src={user?.image} alt="" /> : ""}
                             </div>}
                         </div>
                         <div className="w-full">

@@ -12,35 +12,36 @@ import EditProfile from './edit-profile';
 import ResetPassword from './resetPassword';
 import { useI18n } from '../../../app/providers/i18n';
 
-const items = [
-    {
-        key: 'profile',
-        label: 'Profile',
-        icon: <AiFillDashboard></AiFillDashboard>,
-    },
-    {
-        key: 'setting',
-        label: 'Setting',
-        icon: <FiSettings></FiSettings>,
-    },
-    {
-        key: 'resetPassword',
-        label: 'Reset Password',
-        icon: <FaEdit></FaEdit>,
-    },
-    {
-        key: 'logout',
-        label: 'Logout',
-        icon: <FiSettings></FiSettings>,
-    }
-]
 
 const UserProfile = () => {
     const [active, setActive] = useState('profile')
     const { user, getUser } = useUser()
+    console.log("🚀 ~ UserProfile ~ user:", user)
     const [form] = Form.useForm()
     const { push } = useRouter()
     const i18n = useI18n()
+    const items = [
+        {
+            key: 'profile',
+            label: i18n?.t('Profile'),
+            icon: <AiFillDashboard></AiFillDashboard>,
+        },
+        {
+            key: 'setting',
+            label: i18n?.t('Setting'),
+            icon: <FiSettings></FiSettings>,
+        },
+        {
+            key: 'resetPassword',
+            label: i18n?.t('Reset Password'),
+            icon: <FaEdit></FaEdit>,
+        },
+        {
+            key: 'logout',
+            label: i18n?.t('Logout'),
+            icon: <FiSettings></FiSettings>,
+        }
+    ]
 
     useEffect(() => {
         getUser()
@@ -56,16 +57,18 @@ const UserProfile = () => {
     }
     return (
         <div className='container'>
-            <h1 className='header_2 mt-16 py-10 text-center'>{active == 'profile' ? 'My Profile' : 'Change Password'}</h1>
+            <h1 className='header_2 mt-16 py-10 text-center'>{items.find(item => item.key === active)?.label}</h1>
             <div className='flex gap-10 mb-20'>
                 <div className='w-4/12 border shadow-lg shadow-gray-400 rounded-md p-10 sticky top-0'>
                     <h2 className='text-2xl font-bold'>{i18n?.t('Account Information')}</h2>
                     <div className="relative my-10">
-                        <p className='paragraph_6 text-secondary_text'>{i18n?.t('Profile Picture')}</p>
-                        <div className="max-w-[200px]">
-                            <img className='w-full h-full' src={user?.image ? user?.image : "./man.png"} alt="" />
+                        <div className='flex justify-between items-center'>
+                            <p className='paragraph_6 text-secondary_text'>{i18n?.t('Profile Picture')}</p>
+                            <span className='text-primary text-3xl cursor-pointer'><FaEdit onClick={() => setActive('setting')}></FaEdit></span>
                         </div>
-                        <span className='text-primary text-3xl absolute top-10 cursor-pointer -right-2'><FaEdit onClick={() => setActive('setting')}></FaEdit></span>
+                        <div className="max-w-[200px]">
+                            {user?.image ? <img className='w-full h-full' src={user?.image} alt="" /> : ''}
+                        </div>
                     </div>
                     {
                         items.map((item, index) => <div key={index} onClick={() => {

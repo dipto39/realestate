@@ -23,10 +23,14 @@ function Agents() {
             getData({ limit: 4 });
             
         }
+        if (path === "/home-3") {
+            getData({ limit: 4 });
+            
+        }
     }, [path])
 
     return (
-        <section className={`relative py-20 ${ (path !== '/agents' && path !== '/about' ) ? 'bg-gray_text' : '' }`}>
+        <section className={`relative ${ (path !== '/agents' && path !== '/about' ) ? 'bg-gray_text py-10 md:py-20' : path === '/agents' ? 'py-20' : '' }`}>
             {
                 path !== '/agents' && <>
                     <div className=' absolute left-5 top-1/2 hidden md:block'>

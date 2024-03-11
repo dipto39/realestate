@@ -73,11 +73,11 @@ const Page = ({ params }) => {
                     <hr className='w-full my-6 border-[#909090]' />
                     <div className='mb-8 font-normal text-xl space-y-3'>
                         <div className=' flex justify-between items-center '>
-                            <h1>{i18n?.t('Total Cradite')}</h1>
+                            <h1>{i18n?.t('Total Credit')}</h1>
                             <h1>{data?.plan_type === "regular" ? data?.credits : value}</h1>
                         </div>
                         <div className='mb-8 flex justify-between items-center'>
-                            <h1>{data?.plan_type === "regular" ? i18n?.t('Price') : i18n?.t('Par Cradite')}</h1>
+                            <h1>{data?.plan_type === "regular" ? i18n?.t('Price') : i18n?.t('Par Credit')}</h1>
                             <h1>${data?.price}</h1>
                         </div>
                     </div>
