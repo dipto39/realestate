@@ -3,9 +3,9 @@ const nextConfig = {
   env: {
     backend_url:
       process.env.NODE_ENV === "production"
-        ? "https://realstateexpress.appstick.com.bd/"
-        : "https://realstateexpress.appstick.com.bd/",
-    is_laravel_backend: 'false',
+        ? "https://realstatelaravel.appstick.com.bd/"
+        : "https://realstatelaravel.appstick.com.bd/",
+    is_laravel_backend: 'true',
   },
   images: {
     domains: ['appstick-resources.s3.ap-southeast-1.amazonaws.com'],
