@@ -76,7 +76,7 @@ const FrontTable = ({
 
     return (
         <>
-            <div className={`w-full bg-white ${shadow ? 'shadow-lg' : ''} rounded-sm mb-4`}>
+            <div className={`w-full bg-white ${shadow ? 'shadow-lg' : ''} rounded-sm mb-4 p-4`}>
                 {noHeader || (
                     <header className="px-4 pt-3 pb-2 border-b border-gray-100 flex justify-between flex-wrap">
                         {title ? (
@@ -128,20 +128,20 @@ const FrontTable = ({
                                     </tr>
                                 ) : (
                                     <>
-                                    {/* {
+                                        {/* {
                                         cols?.map((column, index) => (
                                             <div className="h-5 w-full bg-white"></div>
                                         ))
                                     } */}
                                         {(pagination ? data?.docs : data)?.map((row, index) => (
-                                            <tr key={index} className={` ${row?.read === true ? '' : 'bg-gray-200'}`}  style={{ borderBottom: '20px solid white' }}>
-                                                
+                                            <tr key={index} className={` ${row?.read === true ? '' : 'bg-gray-200'}`} style={{ borderBottom: '20px solid white' }}>
+
                                                 {indexed && (
                                                     <td className="p-2 whitespace-nowrap text-gray-500">
                                                         {(pagination ? (data?.page - 1) * data.limit : 0) + index + 1}
                                                     </td>
                                                 )}
-                                        
+
 
                                                 {cols?.map((column, index) => (
                                                     <td className={`p-2 whitespace-nowrap text-gray-700 ${column?.className || ''}`}

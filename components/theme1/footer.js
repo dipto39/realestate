@@ -26,7 +26,7 @@ const Footer = ({ theme1 }) => {
     }
 
     return (
-        <footer className={`pt-16 ${theme1 ? 'dark:bg-neutral-800 bg-white' : 'bg-white'}`} >
+        <footer className={`pt-16 ${theme1 ? 'dark:bg-main_dark bg-white' : 'bg-white'}`} >
             <div className="container">
                 <div className="flex flex-wrap space-y-4 items-center justify-between">
                     <div className=" w-full md:w-1/2 ">

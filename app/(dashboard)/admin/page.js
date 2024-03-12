@@ -3,13 +3,59 @@ import React from 'react';
 import { FiUsers } from 'react-icons/fi';
 import { useI18n } from '../../providers/i18n';
 import { useFetch } from '../../helpers/hooks';
-import { fetchDashboardData } from '../../helpers/backend';
+import { fetchAdminProperties, fetchDashboardData } from '../../helpers/backend';
 import PageTitle from '../../../components/common/title';
 import { FaBuilding } from 'react-icons/fa';
+import Table, { TableImage } from '../../../components/common/table';
+import { statusClass } from '../../helpers/utils';
+import { Tooltip } from 'antd';
 
 const AdminDashboard = () => {
     const i18n = useI18n()
     const [data, getData, { loading }] = useFetch(fetchDashboardData)
+
+    const [property, getProperty] = useFetch(fetchAdminProperties, { limit: 5 })
+
+    const columns = [
+        {
+            text: "Title",
+            dataField: "thumb_image",
+            formatter: (_, d) => (
+                <div className="flex space-x-1 gap-x-3">
+                    <TableImage url={d?.thumb_image} />
+                    <span className="">{
+                        <Tooltip title={d?.title?.length > 30 ? d?.title : ''}
+                        >
+                            <span className='cursor-help'>
+                                {d?.title?.length > 30 ? d?.title?.slice(0, 30) + '...' : d?.title}
+                            </span>
+                        </Tooltip>
+                    }</span>
+                </div>
+            ),
+        },
+        { text: "User", dataField: "agent", formatter: (_, d) => <><p>{d?.agent?.name}</p> <p>{d?.agent?.email}</p> <p>{d?.agent?.phone}</p></> },
+        { text: "Price", dataField: "price", formatter: (_, d) => <span>{d?.price}</span> },
+        { text: "Type", dataField: "type", formatter: (_, d) => <span className="capitalize">{d?.type}</span> },
+        {
+            text: "Category", dataField: "category", formatter: (_, d) => <span className="capitalize">{d?.category?.name}</span>
+        },
+        {
+            text: "Country", dataField: "country", formatter: (_, d) => <span className="capitalize">{d?.country}</span>
+        },
+        {
+            text: "City", dataField: "city", formatter: (_, d) => <span className="capitalize">{d?.city}</span>
+        },
+
+
+        {
+            text: "Status",
+            dataField: "status",
+            formatter: (d) => <span className={statusClass[d]}>{d}</span>,
+        },
+    ];
+
+
     return (
         <div>
             <PageTitle title="Admin Dashboard" />
@@ -93,6 +139,21 @@ const AdminDashboard = () => {
 
 
             </div>
+
+            <div className="mt-8">
+                <PageTitle title="Latest Property List" />
+
+                <Table
+                    columns={columns}
+                    data={property}
+                    onReload={getProperty}
+                    loading={loading}
+                    indexed
+                    pagination
+                    onView={(data) => push(`/admin/property/view/${data?._id}`)}
+                />
+            </div>
+
         </div>
     );
 };

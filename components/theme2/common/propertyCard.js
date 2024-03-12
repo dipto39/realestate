@@ -23,9 +23,12 @@ const SingleProperty = ({ item }) => {
                 <div onClick={() => carouselRef.current.next()} className='absolute right-2 z-50 top-1/2 grid h-7 w-7 -translate-y-1/2 transform cursor-pointer items-center justify-center rounded-full bg-white'>
                     <AiOutlineRight></AiOutlineRight>
                 </div>
-                <button className={`paragraph_7 absolute rounded left-2 top-2 ${item?.type === 'rent' ? 'bg-secondary' : 'bg-secondary_text'} px-3 py-2 text-white uppercase`}>
+                <div className={`paragraph_7 absolute rounded left-2 top-2 ${item?.type === 'rent' ? 'bg-secondary' : 'bg-secondary_text'} px-3 py-2 text-white uppercase`}>
                     {item?.type}
-                </button>
+                </div>
+                <div className={`paragraph_7 absolute rounded right-2 top-2 bg-primary px-3 py-2 text-white uppercase`}>
+                    {item?.category?.name}
+                </div>
                 <div className='absolute bottom-0 !bg-gray-500 !bg-opacity-50 flex w-full items-center justify-between px-8 py-2 text-lg text-white'>
                     <div className='flex items-center justify-center'>
                         <div className='flex h-8 w-8 items-center justify-center rounded-full bg-[#888AA0] text-white'>

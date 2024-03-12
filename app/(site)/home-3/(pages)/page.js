@@ -16,15 +16,22 @@ import { usePathname } from 'next/navigation';
 
 const Home = () => {
     const [home, getHome] = useFetch(fetchSinglePage, {}, false)
+    console.log("🚀 ~ Home 333~ home:", home)
 
     const [data, getData, { loading }] = useFetch(agentsList, {}, false);
     const path = usePathname();
     useEffect(() => {
-
         if (path === "/home-3") {
             getData({ limit: 4 });
         }
     }, [path]);
+
+    useEffect(() => {
+        getHome({
+            slug: 'home'
+        })
+    }, [])
+
     useEffect(() => {
         localStorage.removeItem('theme')
         

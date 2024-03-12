@@ -173,7 +173,7 @@ const Header = ({ theme1, theme3 }) => {
 
   return (
     <header
-      className={`relative z-50 ${theme1 ? "dark:bg-neutral-800 bg-white" : theme3 ? "bg-secondary" : "bg-white"}`}
+      className={`relative z-50 ${theme1 ? "dark:bg-main_dark bg-white" : theme3 ? "bg-secondary" : "bg-white"}`}
     >
       <div className="flex items-center justify-between">
         <div className="container">

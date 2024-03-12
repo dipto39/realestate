@@ -16,7 +16,8 @@ module.exports = {
                 secondary_text: '#888AA0',
                 tertiary_text: '#BDBDC6',
                 hover_color: '#DD8E38',
-                gray_text :'#EAEBEC'
+                gray_text :'#EAEBEC',
+                main_dark: '#222224'
             },
         },
     },

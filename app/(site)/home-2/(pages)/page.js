@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from 'react';
-import Agents from '../../../../components/theme1/home/agents';
+// import Agents from '../../../../components/theme1/home/agents';
 import Blogs from '../../../..//components/theme1/home/blogs';
 import Featured from '../../../../components/theme1/home/featured/featured';
 import FindProperty from '../../../../components/theme1/home/findProperty';
@@ -12,6 +12,7 @@ import WhoWeAre from '../../../../components/theme1/home/whoWeAre';
 import { useFetch } from '../../../helpers/hooks';
 import { agentsList, fetchSinglePage } from '../../../helpers/backend';
 import { usePathname } from 'next/navigation';
+import Agents from '../../../../components/theme2/home/agents';
 
 const Home = () => {
     const [home, getHome] = useFetch(fetchSinglePage, {}, false)
@@ -34,7 +35,7 @@ const Home = () => {
 
     const jsonData = JSON.parse(home?.content || '{}')
     return (
-        <main className='dark:bg-neutral-800 bg-white'>
+        <main className='dark:bg-main_dark bg-white'>
             <Hero jsonData={jsonData} theme1={true} />
             <Places jsonData={jsonData} theme1={true} />
             <WhoWeAre theme1={true} />
@@ -42,7 +43,8 @@ const Home = () => {
             <Featured loading={loading} theme1={true} />
             {/* <FindProperty theme1={true} />  */}
             <Testimonial theme1={true} />
-            <Agents data={data} />
+            {/* <Agents data={data} /> */}
+            <Agents theme2={true} />
             <Blogs theme1={true} />
         </main>
     );

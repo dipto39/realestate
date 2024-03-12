@@ -41,7 +41,7 @@ const Home = () => {
             <Featured></Featured>
             <CompletedProject jsonData={jsonData}></CompletedProject>
             <Places home3={false} jsonData={jsonData}></Places>
-            <Agents data={data} />
+            <Agents />
             <Contact />
             <Testimonial />
             <Blogs />

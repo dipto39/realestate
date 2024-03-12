@@ -24,23 +24,10 @@ const Page = ({ params }) => {
     return (
         <div className='container '>
             <div className='md:flex justify-between items-start gap-6 font-normal pricing-plan-form my-[80px]'>
-                {/* <div className='md:w-1/2 w-full bg-[#D9D9D9] p-[32px] rounded-xl'>
-                    <h1 className='text-2xl mb-8'>Billing Information</h1>
-                    <Form layout="vertical" autoComplete='off'>
-                        <FormInput label='Name' autoComplete='off' name={"name"} placeholder={"Enter Name"}></FormInput>
-                        <FormInput label='Address' autoComplete='off' name={"address"} placeholder={"Enter Address"}></FormInput>
-                        <PhoneNumberInput label='Phone Number' autoComplete='off' name={"phoneNumber"} placeholder={"Enter Phone Number"}></PhoneNumberInput>
-                    </Form>
-                </div> */}
+                
                 <div className='md:w-1/2 mx-auto w-full bg-[#D9D9D9] bg-opacity-20 p-[32px] rounded-xl mt-8 md:mt-0'>
                     <h1 className=' mb-8 text-2xl font-bold'>{i18n?.t('Plan Details')}</h1>
-                    {/* <div className='text-base'>
-                        <h1 className=' mb-3'>Pricing Plan</h1>
-                        <Radio.Group  onChange={(e) => setValue(e.target.value)} value={value}>
-                            <Radio value={'standard'}>Standard</Radio>
-                            <Radio value={'custom'}>Custom</Radio>
-                        </Radio.Group>
-                    </div> */}
+                    
                     {
                         data?.plan_type === "regular" && <h1 className='text-base'>{i18n?.t('Standard')}</h1>
                     }

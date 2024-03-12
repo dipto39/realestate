@@ -230,7 +230,7 @@ export function Header() {
                                     className='text-sm font-semibold text-gray-800 hover:text-gray-900 capitalize'
                                 />
                             </div>
-                            
+
 
                             {!!user?._id ? <Dropdown overlay={userMenu}
                             >
@@ -294,7 +294,7 @@ export function Header() {
                                                                         width: '80%',
                                                                         height: '100%'
                                                                     }}
-                                                                    menu={{ items }}
+                                                                    overlay={item['name'] === i18n?.t('Home') ? homeMenu : itemsMenu}
                                                                 >
                                                                     <a onClick={(e) => e.preventDefault()}>
                                                                         <Space>

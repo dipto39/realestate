@@ -481,3 +481,9 @@
   }
   
 }
+
+.otp-modal {
+  .ant-modal-close {
+    display: none !important;
+  }
+}

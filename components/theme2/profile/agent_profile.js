@@ -73,7 +73,6 @@ function Agent_Profile() {
     const path = usePathname();
 
     const prams = useSearchParams().get("_id");
-    console.log("🚀 ~ Agent_Profile ~ prams:", prams)
 
     useEffect(() => {
         getUser();
@@ -95,7 +94,7 @@ function Agent_Profile() {
             </div>
             <div className="container mx-auto pb-24">
                 <div className="text-center">
-                    <h1 className='header_2 py-10'>{items?.map((item) => item?.key === active && item?.label)}</h1>
+                    <h1 className='header_2 py-10 md:py-20 '>{items?.map((item) => item?.key === active && item?.label)}</h1>
                 </div>
                 <div className="lg:flex block gap-5">
                     <div className="basis-1/3 rounded-lg shadow-lg p-3 md:p-8">

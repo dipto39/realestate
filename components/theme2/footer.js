@@ -45,19 +45,20 @@ const Footer = () => {
                     <div className='w-full md:w-1/2 '>
                         <form onSubmit={(e) => {
                             e.preventDefault();
-                            const email =  e.target.email.value;
-                            handleSubmit({email})                            
+                            const email = e.target.email.value;
+                            handleSubmit({ email })
                         }} form={form}>
                             <div className='flex flex-col gap-x-2 md:justify-end lg:flex-row'>
                                 <div className=''>
                                     <input
-                                    name='email'
+                                        name='email'
                                         type='text'
                                         className='input input-bordered h-14 w-auto border border-tertiary_text bg-secondary p-5 focus:bg-white focus:border-secondary_text focus:outline-none lg:w-[373px]'
                                         placeholder='Enter your email'
                                         required
                                         oninvalid={(e) => e.target.setCustomValidity('Please enter your email')}
                                     ></input>
+                                   
                                     {/* <FormInput required className='input input-bordered h-14 w-auto border border-tertiary_text bg-secondary p-5 focus:bg-white focus:border-secondary_text focus:outline-none lg:w-[373px]' name="email" type="email" /> */}
                                     <div className='mt-2'>
                                         <p className='paragraph_3 text-light_text '>
@@ -84,7 +85,7 @@ const Footer = () => {
                     </div>
                     {/* <div className='order-last flex w-full items-center justify-between md:order-2 md:w-fit md:space-x-6'> */}
                     <div className='md:flex items-center justify-between w-full md:w-fit md:space-x-6 order-last md:order-2'>
-                        
+
                         <div className='paragraph_1 flex cursor-pointer items-center space-x-2 text-light_text hover:text-hover_color '>
                             <Link href="/about">{i18n?.t('About Us')}</Link>
                         </div>
@@ -136,9 +137,12 @@ const Footer = () => {
                         </Link>
                     </div>
                 </div>
-                <div className='mt-8 md:mt-16 flex items-center justify-center border-t border-tertiary_text py-5'>
+                <div className='mt-8 md:mt-16 flex flex-col items-center justify-center border-t border-tertiary_text py-5'>
                     <p className='text-light_text'>
                         Copyright ©_<span>{new Date().getFullYear()}</span> {settings?.title}
+                    </p>
+                    <p className='text-light_text'>
+                        <Link href='https://appstick.com.bd/' target="_blank">{i18n?.t('Developed By Appstick')} </Link>
                     </p>
                 </div>
             </div>

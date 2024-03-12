@@ -67,7 +67,7 @@ const AdminPropertyList = () => {
     ];
 
     let action = (
-        <div className='flex gap-2'>
+        <div className='flex md:flex-row flex-col gap-2'>
             <div>
                 <Select
                     allowClear

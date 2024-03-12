@@ -209,3 +209,8 @@ export const getUserHistorySubscription = (data) => get("/subscription/user-hist
 // admin subscription list
 export const fetchAdminSubscriptionHistoryList = (data) => get("/subscription/admin-history", data)
 
+
+//email settings 
+export const fetchEmailSettings = (data) => get("/mail-credential", data)
+export const postEmailSettings = (data) => post("/mail-credential", data)
+

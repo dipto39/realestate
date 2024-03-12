@@ -7,6 +7,7 @@ import {
     FaLanguage,
     FaServicestack,
     FaQuestion,
+    FaMailBulk,
 } from "react-icons/fa";
 import { MdSubscriptions } from "react-icons/md";
 import { PiNewspaperLight } from "react-icons/pi";
@@ -23,6 +24,11 @@ import Sidebar from "../../../components/layout/sidebar";
 import Header from "../../../components/layout/header";
 import { MdOutlineManageHistory, MdOutlineSpaceDashboard } from "react-icons/md";
 import { useRouter } from "next/navigation";
+import { CiShoppingTag } from "react-icons/ci";
+import { IoIosInformationCircleOutline } from "react-icons/io";
+import { IoPricetagOutline } from "react-icons/io5";
+
+
 
 const Layout = ({ children }) => {
     const router = useRouter();
@@ -93,7 +99,7 @@ const menu = [
     {
         label: "Tags",
         href: "/admin/blog/tags",
-        icon: <BiCategory />,
+        icon: <CiShoppingTag />,
     },
     {
         label: "Blogs",
@@ -107,12 +113,12 @@ const menu = [
     {
         label: "Category",
         href: "/admin/property/category",
-        icon: <FaBuilding />,
+        icon: <BiCategory />,
     },
     {
         label: "Additional Info",
         href: "/admin/property/additional-info",
-        icon: <FaBuilding />,
+        icon: <IoIosInformationCircleOutline />,
     },
     {
         label: "Property",
@@ -135,7 +141,7 @@ const menu = [
     {
         label: "Pricing Plan",
         href: "/admin/pricing-plan",
-        icon: <MdSubscriptions />,
+        icon: <IoPricetagOutline />,
     },
     {
         label: "Newsletter",
@@ -164,6 +170,11 @@ const menu = [
         label: "Settings",
         href: "/admin/settings",
         icon: <FaWrench />,
+    },
+    {
+        label: "Email Settings",
+        href: "/admin/email-setting",
+        icon: <FaMailBulk />,
     },
     {
         label: "Faq Page",

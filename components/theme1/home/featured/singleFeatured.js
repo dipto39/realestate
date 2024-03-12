@@ -53,7 +53,7 @@ const SingleFeatured = ({ theme1 }) => {
                                 <div className="flex flex-wrap mb-5 md:mb-0">
                                     <h1 className={`header_4 !font-bold hover:text-hover_color transition-all ease-in-out pr-8 ${theme1 ? 'text-dark_text dark:text-violet-100' : 'text-dark_text'}`}>{i18n?.t('Property for')} <span className="capitalize">{property?.type}</span> </h1>
                                 </div>
-                                <div className={`flex justify-between md:py-5 md:pr-5 md:absolute lg:-bottom-1  md:w-[700px] w-full  z-10 ${theme1 ? 'dark:bg-neutral-800 bg-white' : 'bg-white'}`}>
+                                <div className={`flex justify-between md:py-5 md:pr-5 md:absolute lg:-bottom-1  md:w-[700px] w-full  z-10 ${theme1 ? 'dark:bg-main_dark bg-white' : 'bg-white'}`}>
                                     <div className="">
                                         <h1 className={`header_3 capitalize ${theme1 ? 'text-dark_text dark:text-white' : 'text-dark_text'}`}>{property?.title}</h1>
                                         <p className={`paragraph_1 ${theme1 ? 'text-secondary_text dark:text-violet-100' : 'text-secondary_text'}`}>{property?.city}, {property?.country}</p>

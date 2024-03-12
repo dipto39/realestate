@@ -16,12 +16,9 @@ import { useI18n } from '../../../app/providers/i18n';
 
 
 const Agents = ({ data }) => {
-  console.log("🚀 ~ Agents ~ data:", data)
   const theme = "main";
   
-  const i18n = useI18n();
-
-  
+  const i18n = useI18n();  
 
   return (
     <div className="py-28 md:py-12">
@@ -69,7 +66,7 @@ const Team = ({ member }) => {
             <div className="absolute bottom-5 w-full text-white md:px-20 lg:px-10 px-28 pb-12 md:pb-20">
               <h1
                 className="pb-5 text-center cursor-pointer hover:underline header_5"
-                onClick={() => router.push(`/agents/view/${data?._id}`)}
+                onClick={() => router.push(`/agents/view/${member?._id}`)}
               >
                 {member?.name}
               </h1>

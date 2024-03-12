@@ -9,8 +9,8 @@ import { useRouter } from 'next/navigation';
 import { useUser } from '../../../app/contexts/user';
 import OTPInput from 'react-otp-input';
 import { useTimer } from 'use-timer';
-
-
+import { RxCross1, RxCrossCircled } from "react-icons/rx";
+import { Fa500Px, FaAddressBook, FaRegAddressBook } from 'react-icons/fa';
 function Signup() {
   const router = useRouter()
   const [form] = Form.useForm();
@@ -39,7 +39,7 @@ function Signup() {
   };
 
   return (
-    <section className="relative py-20">
+    <section className="relative py-20 ">
       <div className="absolute top-5 left-5">
         <img width="50" src="./llt.png" alt="" />
       </div>
@@ -62,7 +62,7 @@ function Signup() {
               // return console.log("values", values)
               if (!!values?.email) {
                 setEmail(values?.email)
-                const { error, msg, data } = await sendOtp({ email: values?.email, action: 'registration' });
+                const { error, msg, data } = await sendOtp({ email: values?.email, phone: values?.phone, action: 'registration' });
                 if (error) {
                   return message.error(msg);
                 } else {
@@ -179,9 +179,12 @@ function Signup() {
 
         </div>
       </div>
-      <Modal open={otpModal} onCancel={() => setOtpModal(false)} footer={null} width={1000} >
+      <Modal open={otpModal} className='otp-modal' footer={null} width={1000} >
         <div className=' w-4/5 md:w-3/5 mx-auto py-20'>
           <h1 className='header_3 pb-2 text-center text-dark_text'>{i18n?.t('Verify Code')}</h1>
+          <div className='absolute top-2 right-5 cursor-pointer text-xl' onClick={() => setOtpModal(false)}>
+            x
+          </div>
           <Form
             name="basic"
             style={{
@@ -197,12 +200,14 @@ function Signup() {
             onFinish={
               async (values) => {
                 if (!!values?.otp) {
-                  setOtpModal(false);
+                  // setOtpModal(false);
                   const payload = {
                     ...registrationValues,
                     otp: values?.otp,
                   }
                   const { error, msg, data } = await postRegister(payload);
+                  console.log("🚀 ~ data:", data)
+                  console.log("🚀 ~ error:", error)
                   if (error) {
                     return message.error(msg);
                   } else {
@@ -228,6 +233,7 @@ function Signup() {
               }
             }
           >
+
             <Form.Item
               name="otp"
               className='my-8'

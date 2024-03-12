@@ -17,14 +17,13 @@ const WhoWeAre = ({ theme1 }) => {
     }, [])
 
     const jsonData = JSON.parse(about?.content || '{}')
-    console.log("🚀 ~ WhoWeAre ~ jsonData:", jsonData)
     return (
         <div className="container">
             <div className="mx-auto flex flex-wrap mb-[8rem] mt-[5rem] ">
                 <div className='md:w-[45%] w-full mb-5 h-[397px] md:h-[810px] lg:h-[530px]' >
                     <div className="relative">
                         <div className="w-[210px] h-[200px] md:w[476px] md:h-[444px] lg:w-[347px] lg:h-[367px] border-2 border-hover_color"></div>
-                        { jsonData?.plan_design?.plan_design_image1[0]?.url ? <img alt="about" className="sm:w-[380px] h-[270px] w-[260px] md:ml-3 md:w-[740px] md:h-[710px] lg:h-[530px] lg:w-[490px] object-fill z-10 absolute top-10 left-7" src={jsonData?.plan_design?.plan_design_image1} /> :
+                        {jsonData?.plan_design?.plan_design_image1[0]?.url ? <img alt="about" className="sm:w-[380px] h-[270px] w-[260px] md:ml-3 md:w-[740px] md:h-[710px] lg:h-[530px] lg:w-[490px] object-fill z-10 absolute top-10 left-7" src={jsonData?.plan_design?.plan_design_image1[0]?.url} /> :
                         jsonData?.plan_design?.plan_design_image1 ? <img alt="about" className="sm:w-[380px] h-[270px] w-[260px] md:ml-3 md:w-[740px] md:h-[710px] lg:h-[530px] lg:w-[490px] object-fill z-10 absolute top-10 left-7" src={jsonData?.plan_design?.plan_design_image1} /> : ''}
                     </div>
                 </div>

@@ -11,7 +11,7 @@ const I18nProvider = ({ children }) => {
     const [languages] = useFetch(fetchPublicLanguages)
     const [translations, setTranslations] = useState({})
     const [lang, setLang] = useState()
-
+    const [isRtl, setIsRtl] = useState('ltr') 
     useEffect(() => {
         const lang = localStorage.getItem('lang')
         if (!!lang) {
@@ -32,6 +32,8 @@ const I18nProvider = ({ children }) => {
 
     const changeLanguage = (value) => {
         setLang(value)
+        const selectedLang = languages.find(l => l._id === value)
+        setIsRtl(selectedLang?.rtl ? 'rtl' : 'ltr')
         localStorage.setItem('lang', value)
         // window.location.reload()
     }
@@ -41,10 +43,15 @@ const I18nProvider = ({ children }) => {
             languages?.forEach(lang => {
                 if (!!lang?.default) {
                     setLang(lang?._id)
+                    setIsRtl(lang?.rtl ? 'rtl' : 'ltr')
                 }
             })
         }
     }, [languages])
+
+    useEffect(() => {
+        document.documentElement.dir = isRtl
+    }, [isRtl])
 
 
     const t = (key) => translations?.[key] || key

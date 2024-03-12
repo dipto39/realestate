@@ -56,7 +56,7 @@ const Hero = ({ theme1, jsonData }) => {
                     </div>
                 </div>
                 <div
-                    className={`bottom-0 right-0 md:absolute ${theme1 ? 'dark:bg-neutral-800 bg-white' : 'bg-white'} order-3 py-4 ps-4 md:w-96 `}
+                    className={`bottom-0 right-0 md:absolute ${theme1 ? 'dark:bg-main_dark bg-white' : 'bg-white'} order-3 py-4 ps-4 md:w-96 `}
                 >
                     <h3 className={`header_3 ${theme1 ? 'dark:text-violet-100 text-dark_text' : 'text-dark_text'}`}>
                         {i18n?.t('Leave Us')} <br />{i18n?.t('A Message')}

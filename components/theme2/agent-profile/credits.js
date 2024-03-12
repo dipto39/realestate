@@ -25,7 +25,7 @@ function Credits({ credits }) {
     const i18n = useI18n();
     return (
         <>
-            <h1 className='header_4_bold pb-3 text-dark_text'>{i18n?.t('Packages')}</h1>
+            <h1 className='header_4_bold pb-3 text-dark_text'>{i18n?.t('My Credits')}</h1>
             <div className='mb-9 w-full rounded bg-gray-200 p-5'>
                 <p className='paragraph_1'>
                     {i18n?.t('Your credits')}: <span className='text-primary'>{credits ? credits : 0} {i18n?.t('credits')}</span>

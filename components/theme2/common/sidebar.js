@@ -57,14 +57,16 @@ const Sidebar = ({ data, getData }) => {
             <form className='w-full' onSubmit={(e) => {
 
                 e.preventDefault()
-                console.log(e.target.search.value)
                 getData({
                     search: e.target.search.value,
                 })
             }}>
                 <div className='flex w-full'>
                     <div className='w-full'>
-                        <input
+                        <input onChange={(e) => {
+                            e.preventDefault()
+                            getData({ search: e.target.value })
+                        }}
                             name='search'
                             type='text'
                             className='input input-bordered h-14 w-full border border-tertiary_text p-5 focus:border-secondary_text focus:bg-white focus:outline-none '
@@ -453,7 +455,7 @@ const Sidebar = ({ data, getData }) => {
                                             setActive('price')
                                         }}
                                         min={0}
-                                        max={5000}
+                                        max={50000}
                                         range={{
                                             draggableTrack: true,
                                         }}
@@ -463,7 +465,7 @@ const Sidebar = ({ data, getData }) => {
                                 </Form.Item>
                             </div>
                             <p className='paragraph_7 mt-1 !font-bold text-secondary_text' >
-                                Price Range: $0 -$5000
+                                Price Range: $0 -$50000
                             </p>
                         </div>
                     </div>
