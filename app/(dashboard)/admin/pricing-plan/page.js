@@ -144,7 +144,7 @@ const AdminPricingPlan = () => {
                                             <FormInput name={[name]} label={i18n.t("Features")} required />
                                         </div>
                                         <div className="" style={{ marginTop: 32 }}>
-                                            <Button className="text-red-600 !bg-red-600" type="button" onClick={() => remove(index)}>X</Button>
+                                            <Button className="text-red-600 " type="button" onClick={() => remove(index)}>X</Button>
                                         </div>
                                     </div>
 

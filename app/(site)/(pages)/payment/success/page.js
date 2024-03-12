@@ -16,7 +16,7 @@ const SuccessPage = () => {
       <div className='mt-12 flex items-center justify-center'>
 
         <SingelBtn className={""}>
-          <Link href='/'>{i18n?.t('Back To Homepage')}</Link>
+          <Link href='/agent-profile'>{i18n?.t('Back To Dashboard')}</Link>
         </SingelBtn>
       </div>
     </div >

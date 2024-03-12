@@ -48,12 +48,12 @@ const Facilities = ({ singleData }) => {
     return (
         <div className='my-14 bg-[#FAFAFF] p-3 md:p-7 rounded-md'>
             <div className={`grid place-content-between place-items-center gap-4 grid-cols-2 md:grid-cols-3 ${propertyId ? 'lg:grid-cols-3' : ' lg:grid-cols-6 '}`}>
-                <FacilitiesItem title={"Area"} value={singleData?.area} icon={'/area.png'} />
-                <FacilitiesItem title={"Unit"} value={singleData?.unit} icon={'/unit.png'} />
-                <FacilitiesItem title={"Bathrooms"} value={singleData?.bathrooms} icon={'/bedroom.png'} />
-                <FacilitiesItem title={"bedrooms"} value={singleData?.bedrooms} icon={'/bathroom.png'} />
-                <FacilitiesItem title={"garage"} value={singleData?.garage} icon={'/garage.png'} />
-                <FacilitiesItem title={"kitchen"} value={singleData?.kitchen} icon={'/kitchen.png'} />
+                <FacilitiesItem title={"Area"} value={singleData?.area} icon={'/icons/area.png'} />
+                <FacilitiesItem title={"Unit"} value={singleData?.unit} icon={'/icons/apartment.png'} />
+                <FacilitiesItem title={"Bathrooms"} value={singleData?.bathrooms} icon={'/icons/bedroom.png'} />
+                <FacilitiesItem title={"bedrooms"} value={singleData?.bedrooms} icon={'/icons/bathroom.png'} />
+                <FacilitiesItem title={"garage"} value={singleData?.garage} icon={'/icons/garage.png'} />
+                <FacilitiesItem title={"kitchen"} value={singleData?.kitchen} icon={'/icons/kitchen.png'} />
             </div>
         </div>
     );
@@ -62,14 +62,15 @@ const Facilities = ({ singleData }) => {
 export default Facilities;
 
 const FacilitiesItem = ({ title, value, icon }) => {
+    console.log("🚀 ~ FacilitiesItem ~ title:", title)
     return (
         <div className='h-full w-full rounded-md bg-white transition-shadow delay-100 ease-in-out hover:shadow-xl py-8'>
             <div className='flex h-full  w-full flex-col items-center justify-center'>
-                <div className='flex md:h-[42px] h-[34px] w-[42px] md:w-[52px] items-center justify-center'>
+                <div className='flex md:h-[42px] h-[34px] lg:w-[42px] md:w-[52px] items-center justify-center'>
                     <img src={icon} alt='' className=' object-contain' />
                 </div>
                 <p className='md:text-3xl font-libre_baskerville text-base  mb-2 mt-4 text-dark_text capitalize'>{title}</p>
-                <p className='paragraph_1 text-secondary_text'>{value} <span className='lowercase'>{title}</span></p>
+                <p className='paragraph_1 text-secondary_text'>{value} <span className='lowercase'>{title} {title === 'Unit' || title === 'Area' ? <span>m<sup>2</sup></span> : ''} </span></p>
             </div>
         </div>
     );

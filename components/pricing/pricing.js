@@ -98,7 +98,7 @@ const Pricing1 = () => {
                                 </ul>
                             </div>
                                 <div className='absolute bottom-0 w-full p-5'>
-                                    <Link href={`/pricing-plan/${item?._id}`}>
+                                    {user?.role === 'agent' ? <Link href={`/pricing-plan/${item?._id}`}>
                                         <button onClick={() => {
                                             if (!user) {
                                                 message.error(i18n?.t('Please login first a agent'))
@@ -110,7 +110,7 @@ const Pricing1 = () => {
                                         }} className='header_5 w-full rounded-lg border border-secondary_text bg-white py-3 text-secondary_text transition-all ease-in-out hover:bg-primary hover:text-white '>
                                             {i18n?.t('Choose Plan')}
                                         </button>
-                                    </Link>
+                                    </Link> : ''}
                                 </div>
                         </SwiperSlide>
                     ))}

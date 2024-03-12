@@ -35,7 +35,7 @@ const Contact = () => {
                 <h1 className='header_2 text-center text-dark_text'>{i18n?.t('Get in touch with us')} </h1>
 
                 <div className='container mx-auto'>
-                    <div className='mt-3 md:mt-16 flex items-center max-w-[1216px] flex-col justify-between rounded-md p-5 gap-5 shadow-lg lg:flex-row'>
+                    <div className='mt-3 md:mt-16 flex items-center flex-col justify-between rounded-md p-5 gap-5 shadow-lg lg:flex-row'>
                         <div className='relative mt-6 w-full rounded-md bg-secondary p-5 lg:mt-0 lg:w-[550px] lg:h-[630px] md:mr-8 lg:mr-0'>
                             <div className='flex h-full flex-col justify-between gap-6 z-20'>
                                 <div className='mt-4'>

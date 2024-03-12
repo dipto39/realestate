@@ -58,13 +58,13 @@ const AdminFaq = () => {
                 onDelete={delFaq}
                 indexed
                 pagination
-                title={i18n.t("Frequently Ask Qsn")}
+                title={i18n.t("Frequently Ask Question")}
             />
 
             <Modal
                 open={open}
                 onCancel={() => setOpen(false)}
-                title={i18n.t("Frequently Ask Qsn Details")}
+                title={i18n.t("Frequently Ask Question Details")}
                 footer={null}
             >
                 <Form

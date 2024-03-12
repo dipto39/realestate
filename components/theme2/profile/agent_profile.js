@@ -86,16 +86,22 @@ function Agent_Profile() {
 
     return (
         <section className='relative'>
-            <div className="absolute top-10 left-3">
-                <img src="" alt="" />
-            </div>
-            <div className="absolute top-10 right-3">
-                <img src="" alt="" />
+
+            <div className="text-center">
+
+                <section className='relative z-0 -mt-[103px]  bg-white pt-20 pb-10 md:py-20'>
+                    <div className='absolute bottom-0 left-0'>
+                        <img width='100' src='/1.png' alt='' />
+                    </div>
+                    <div className='absolute right-0 top-0'>
+                        <img width='100' src='/2.png' alt='' />
+                    </div>
+                    <div className='container text-center '>
+                        <h1 className='header_2 py-10 md:py-20 '>{items?.map((item) => item?.key === active && item?.label)}</h1>
+                    </div>
+                </section>
             </div>
             <div className="container mx-auto pb-24">
-                <div className="text-center">
-                    <h1 className='header_2 py-10 md:py-20 '>{items?.map((item) => item?.key === active && item?.label)}</h1>
-                </div>
                 <div className="lg:flex block gap-5">
                     <div className="basis-1/3 rounded-lg shadow-lg p-3 md:p-8">
                         <h1 className='header_4_bold text-dark_text'>{i18n.t('Account Information')}</h1>
@@ -107,7 +113,7 @@ function Agent_Profile() {
                                 <div className='text-primary text-3xl cursor-pointer'><FaEdit onClick={() => setActive('setting')}></FaEdit></div>
                             </div>
                             {user?.image && <div className="max-w-[200px]">
-                               { user?.image ? <img className='w-full h-full rounded' src={user?.image} alt="" /> : ""}
+                                {user?.image ? <img className='w-full h-full rounded' src={user?.image} alt="" /> : ""}
                             </div>}
                         </div>
                         <div className="w-full">

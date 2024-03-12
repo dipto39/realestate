@@ -292,7 +292,7 @@ export default function AddProperty({ setActive }) {
                             {i18n?.t('Property Location')} <span className='text-primary'>*</span>
                         </p>
                     </div>
-                    <FormInput rules={[{ required: true , message: i18n?.t('Please enter address')}]} required={true} name={'address'}></FormInput>
+                    <FormInput required={true} name={'address'}></FormInput>
                 </div>
 
                 <div className='mt-6 grid grid-cols-4 gap-5'>

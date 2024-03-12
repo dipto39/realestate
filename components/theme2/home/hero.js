@@ -1,6 +1,6 @@
 "use client"
 import Link from 'next/link';
-import { AiFillDollarCircle } from 'react-icons/ai';
+import { MdCategory } from "react-icons/md";
 import { FaCaretDown, FaSearch } from 'react-icons/fa';
 import {
     FaEllipsisVertical,
@@ -109,14 +109,14 @@ const Hero = ({ home3, jsonData }) => {
                                 { (values?.location || values?.city || values?.country || type) && router.push('/property') }
                                 { type === undefined && router.push('/property') }
                             }}>
-                                <FaSearch />
+                                    <MdCategory className='text-white' />
                                 <div className='w-full mt-4'>
                                     <Form.Item name='category'>
                                         <Select
                                             allowClear
                                             showSearch
                                             
-                                            placeholder='Select Property Category'
+                                            placeholder='Select Category'
                                             
                                             options={categories?.map((item) => {
                                                 return { value: item?._id, label: item?.name }
@@ -195,7 +195,7 @@ const Hero = ({ home3, jsonData }) => {
                         }} className='filter-home'>
                             <div className='grid grid-cols-3 items-center justify-between md:flex'>
                                 <div className='paragraph_2 gap-2 flex items-center px-5  md:w-auto w-full'>
-                                    <FaSearch className='text-white' />
+                                    <MdCategory className='text-white' />
                                     <div className='w-full'>
                                     <Form.Item name='category'>
                                         <Select
@@ -206,7 +206,7 @@ const Hero = ({ home3, jsonData }) => {
                                             //     width: '100%',
                                             //     borderRadius: '0px',
                                             // }}
-                                            placeholder='Select Property Category'
+                                            placeholder='Select Category'
                                             // optionFilterProp='children'
                                             // filterOption={(input, option) =>
                                             //     (option?.label ?? '').includes(input)

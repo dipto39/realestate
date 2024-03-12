@@ -13,6 +13,7 @@ function ResetPassword() {
     return (
         <>
             <h1 className='header_4_bold pb-3 text-dark_text'>{i18n?.t('Reset Password')}</h1>
+            
             <div className='flex flex-col gap-y-4 mt-10'>
                 <Form layout="vertical" form={form}
                     onFinish={async (values) => {

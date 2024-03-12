@@ -30,6 +30,11 @@ const Languages = () => {
                 className='bg-gray-500'
             />
         },
+        {
+            text: 'RTL', dataField: 'rtl', formatter: (_, d) => <span>
+                {d?.rtl ? 'Yes' : 'No'}
+            </span>
+        }
     ]
     return (
         <div>

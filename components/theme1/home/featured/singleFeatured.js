@@ -37,12 +37,10 @@ const SingleFeatured = ({ theme1 }) => {
             >
                 {
                     data?.docs?.map((property) => <SwiperSlide key={property._id}>
-                        <div className="md:flex pb-16">
+                        <div className="md:flex pb-3 md:pb-16">
                             <div className="basis-1/2 relative px-2 pb-5 md:pb-0">
                                 <div className=" ">
                                     <div className={`paragraph_3 py-8 ${theme1 ? 'dark:text-violet-100 text-black' : '!text-black'}`}>
-                                        {/* <div className='' dangerouslySetInnerHTML={{ __html: htmlItem?.slice(0, 10) }}></div> */}
-                                        {/* <div className='' dangerouslySetInnerHTML={{ __html: property?.description?.slice(0, 200) }}></div> */}
                                         <p>
                                             {
                                                 property?.short_description?.length > 170 ? property?.short_description.slice(0, 170) + '...' : property?.short_description
@@ -77,27 +75,13 @@ const SingleFeatured = ({ theme1 }) => {
                                             <p className={`paragraph_6 ${theme1 ? 'text-dark_text dark:text-gray-400' : 'text-secondary_text'}`}>{i18n?.t('Price')}</p>
                                             <p className={`header_7 ${theme1 ? 'dark:text-white text-dark_text' : 'text-dark_text'}`}>${property?.price}</p>
                                         </div>
-                                        {/* <div className="">
-                                            <p className={`paragraph_6 pt-2 ${theme1 ? 'text-secondary_text dark:text-gray-400' : 'text-secondary_text'}`}>Ratings</p>
-                                            <div className="flex items-center">
-                                                <div className="flex">
-                                                    <Rate
-                                                        character={<FiStar />}
-                                                        className='!text-hover_color'
-                                                        disabled
-                                                        defaultValue={2} />
-                                                </div>
-                                                <p className={`paragraph_6 ${theme1 ? 'text-secondary_text dark:text-gray-400' : 'text-secondary_text'}`}>(24)</p>
-                                            </div>
-                                        </div> */}
-
                                     </div>
                                 </div>
                             </div>
                             <div className="basis-1/2">
 
-                                <div className="md:absolute">
-                                    <img src="/featured.png" alt="" />
+                                <div className="md:absolute h-full w-full">
+                                    <img className='md:w-[600px] md:h-[450px] lg:h-[480px] object-fill' src={property?.thumb_image} alt="" />
                                 </div>
                                 <div className="md:mt-[430px] mt-5">
                                     <img src="./img/Arrow.png" alt="" />
@@ -108,7 +92,7 @@ const SingleFeatured = ({ theme1 }) => {
                     )
                 }
             </Swiper>
-            <div className='flex gap-5 justify-center absolute bottom-0 right-0 text-secondary_text text-3xl z-30'>
+            <div className='flex gap-5 justify-center absolute bottom-0 lg:-bottom-10 right-0 text-secondary_text text-3xl z-30'>
                 <button className='swiper2-next group transition-all duration-1000' onClick={() => {
                     swiperRef2.current && swiperRef2.current.swiper && swiperRef2.current.swiper?.slideNext()
                 }}>

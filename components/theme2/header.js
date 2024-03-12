@@ -78,7 +78,7 @@ export function Header() {
         {
             homeItems.map((item, index) => (
                 <Menu.Item key={index}>
-                    <Link href={item?.href}>{item?.label}</Link>
+                    <Link onClick={() => setIsMenuOpen(false)} href={item?.href}>{item?.label}</Link>
                 </Menu.Item>
 
             ))
@@ -110,7 +110,7 @@ export function Header() {
         {
             items.map((item, index) => (
                 <Menu.Item key={index} >
-                    <Link href={item?.href}>{item?.label}</Link>
+                    <Link onClick={() => setIsMenuOpen(false)} href={item?.href}>{item?.label}</Link>
                 </Menu.Item>
             ))
         }
@@ -201,6 +201,7 @@ export function Header() {
                                             }}>
                                                 <Link
                                                     href={item.href}
+                                                    onClick={() => setIsMenuOpen(false)}
                                                     className='paragraph_9 text-dark_text transition-colors ease-in-out hover:text-primary'
                                                 >
                                                     {item.name}
@@ -256,12 +257,36 @@ export function Header() {
                         <div className='flex space-x-6 lg:hidden'>
                             <div className='flex items-center space-x-6'>
                                 <div className='paragraph_1 flex cursor-pointer items-center space-x-2 text-dark_text transition-all ease-in-out hover:text-hover_color'>
-                                    <span className='text-sm font-semibold text-gray-800 hover:text-gray-900'>
-                                        EN
-                                    </span>
+                                    
+                                <Select
+                                    defaultValue={
+                                        localStorage.getItem('lang') ?
+                                            i18n.languages?.find(lang => lang?._id === localStorage.getItem('lang'))?.name
+                                            :
+                                            i18n.languages?.find(lang => lang?.default)?.name
+                                    }
+                                    style={{ width: 100, color: 'white' }}
+                                    bordered={false}
+                                    onChange={(value) => {
+                                        i18n.changeLanguage(value)
+                                    }}
+                                    options={i18n.languages?.map(lang => ({ value: lang?._id, label: lang?.name }))}
+                                    className='text-sm font-semibold text-gray-800 hover:text-gray-900 capitalize'
+                                />
                                 </div>
                                 <div className=' paragraph_1 flex cursor-pointer items-center text-dark_text transition-all ease-in-out hover:text-hover_color'>
-                                    <FiUser className='h-6 w-6' />
+
+                                    {!!user?._id ? <Dropdown overlay={userMenu}
+                                    >
+                                        <FiUser className='h-6 w-6 cursor-pointer' />
+                                    </Dropdown> :
+                                        <Link href='/login'>
+                                            <div className=' paragraph_9 flex cursor-pointer items-center text-dark_text transition-all ease-in-out hover:text-hover_color'>
+                                                {/* <FiUser className='h-6 w-6' /> */}
+                                                Login
+                                            </div>
+                                        </Link>
+                                    }
                                 </div>
                             </div>
                             <FiMenu onClick={toggleMenu} className='h-6 w-6 cursor-pointer' />
@@ -309,6 +334,7 @@ export function Header() {
                                                         <>
                                                             <li key={index}>
                                                                 <Link
+                                                                onClick={() => setIsMenuOpen(false)}
                                                                     href={item.href}
                                                                     className='paragraph_9 text-dark_text transition-colors ease-in-out hover:text-primary'
                                                                 >

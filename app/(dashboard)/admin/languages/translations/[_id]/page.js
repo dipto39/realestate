@@ -382,7 +382,7 @@ const Translations = ({ params }) => {
         { name: "Admin" },
         { name: "Fullname" },
         { name: "Phone" },
-
+        { name: "Please input a valid email!" },
         { name: "Property Not Found!!!" },
         { name: "Property Details" },
         { name: "Agents" },
@@ -411,7 +411,6 @@ const Translations = ({ params }) => {
 
         { name: "Create Account" },
         { name: "Already have an account?" },
-        { name: "Login" },
         { name: "OTP sent to" },
         { name: "Sign up as User" },
         { name: "Sign up as Agent" },
@@ -430,6 +429,8 @@ const Translations = ({ params }) => {
         { name: "Agent’s Details" },
         { name: "Please enter a valid email address" },
         { name: "Meet With Team" },
+        { name: "Short Description" },
+        { name: "Select Category" },
     ];
 
     const handleSubmit = async values => {

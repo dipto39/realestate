@@ -84,7 +84,7 @@ const Footer = () => {
                         </Link>
                     </div>
                     {/* <div className='order-last flex w-full items-center justify-between md:order-2 md:w-fit md:space-x-6'> */}
-                    <div className='md:flex items-center justify-between w-full md:w-fit md:space-x-6 order-last md:order-2'>
+                    <div className='md:flex items-center justify-between w-full md:w-fit md:space-x-6 space-y-2 md:space-y-0 order-last md:order-2'>
 
                         <div className='paragraph_1 flex cursor-pointer items-center space-x-2 text-light_text hover:text-hover_color '>
                             <Link href="/about">{i18n?.t('About Us')}</Link>
@@ -142,7 +142,7 @@ const Footer = () => {
                         Copyright ©_<span>{new Date().getFullYear()}</span> {settings?.title}
                     </p>
                     <p className='text-light_text'>
-                        <Link href='https://appstick.com.bd/' target="_blank">{i18n?.t('Developed By Appstick')} </Link>
+                        <Link href='https://appstick.com.bd/' target="_blank">{i18n?.t('Developed By')} <span className='text-primary'>Appstick</span></Link>
                     </p>
                 </div>
             </div>

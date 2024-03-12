@@ -71,7 +71,7 @@ const SingleProperty = ({ item }) => {
             </div>
 
             <div className='absolute bottom-0 left-0 right-0 p-4'>
-                <div className='my-5 flex items-center justify-between border p-2 text-gray-600'>
+                <div className='my-5 flex items-center justify-between border rounded p-2 text-gray-600'>
                     <div className='flex basis-1/3 items-center justify-center'>
                         <span className='text-lg'>
                             <FaBed />

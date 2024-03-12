@@ -12,7 +12,7 @@ const FAQ = () => {
     const i18n = useI18n();
     return (
         <div className='pb-20'>
-            <div className='md:flex items-start justify-between gap-12 md:grid-cols-2 place-items-center'>
+            <div className='md:flex items-center justify-between gap-12 md:grid-cols-2 place-items-center'>
                 <div className='md:w-1/2 place-items-center '>
                     <div className='w-full'>
                         <img

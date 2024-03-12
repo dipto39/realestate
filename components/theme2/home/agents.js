@@ -68,10 +68,10 @@ function Agents({theme2}) {
                                                 alt='man'
                                             />
                                             <div className='opacity-0 group-hover:opacity-100'>
-                                                <h1 className=' header_5 absolute left-1/2 top-8 -translate-x-1/2 transform text-white'>
+                                                <h1 className=' header_5 absolute left-1/2 top-5 md:top-8 -translate-x-1/2 transform text-white'>
                                                     {data?.name}
                                                 </h1>
-                                                <div className='absolute -bottom-12 w-full text-white md:px-20 lg:px-10 px-28'>
+                                                <div className='absolute -bottom-3 md:-bottom-12 w-full text-white md:px-20 lg:px-10 px-28'>
                                                     <h1 className='pb-5 text-center cursor-pointer hover:underline header_5'
                                                         onClick={() => router.push(`/agents/view/${data?._id}`)}
                                                     >{data?.name}</h1>

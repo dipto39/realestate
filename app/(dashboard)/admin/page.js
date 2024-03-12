@@ -9,10 +9,12 @@ import { FaBuilding } from 'react-icons/fa';
 import Table, { TableImage } from '../../../components/common/table';
 import { statusClass } from '../../helpers/utils';
 import { Tooltip } from 'antd';
+import { useRouter } from 'next/navigation';
 
 const AdminDashboard = () => {
     const i18n = useI18n()
     const [data, getData, { loading }] = useFetch(fetchDashboardData)
+    const { push } = useRouter();
 
     const [property, getProperty] = useFetch(fetchAdminProperties, { limit: 5 })
 
@@ -72,7 +74,6 @@ const AdminDashboard = () => {
                     </div>
                 </div>
 
-
                 <div className="lg:w-1/3 w-full bg-white shadow-lg rounded-lg h-24">
                     <div className="flex justify-between items-center px-4 py-4">
                         <div className="">
@@ -100,7 +101,6 @@ const AdminDashboard = () => {
             </div>
 
             <div className="flex lg:flex-row flex-col gap-8 mt-8">
-
                 <div className="lg:w-1/3 w-full bg-white shadow-lg rounded-lg h-24">
                     <div className="flex justify-between items-center px-4 py-4">
                         <div className="">
@@ -136,13 +136,10 @@ const AdminDashboard = () => {
                         </div>
                     </div>
                 </div>
-
-
             </div>
 
             <div className="mt-8">
                 <PageTitle title="Latest Property List" />
-
                 <Table
                     columns={columns}
                     data={property}
@@ -153,7 +150,6 @@ const AdminDashboard = () => {
                     onView={(data) => push(`/admin/property/view/${data?._id}`)}
                 />
             </div>
-
         </div>
     );
 };

@@ -60,7 +60,7 @@ const Testimonial = ({ theme1 }) => {
                         <div className='relative md:basis-2/5'>
                             <img
                                 src={item?.image}
-                                className='h-[460px] w-[460px] object-cover '
+                                className='h-[300px] md:h-[460px] w-[460px] object-cover '
                                 alt=''
                             />
                             <div className='absolute -left-14 top-7 hidden h-32 w-32 items-center justify-center rounded-full bg-white shadow-lg lg:flex'>
@@ -72,7 +72,7 @@ const Testimonial = ({ theme1 }) => {
             </Swiper>
             <div className='container mx-auto relative'>
 
-                <div className=' flex items-center gap-5 text-secondary_text text-3xl absolute left-0 z-30'>
+                <div className=' flex items-center gap-5 text-secondary_text text-3xl absolute top-3 md:top-0 left-0 z-30'>
                     <button className='swiper1-next group' onClick={() => {
                         swiperRef.current && swiperRef.current.swiper && swiperRef.current.swiper.slideNext()
                     }}>

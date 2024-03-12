@@ -57,7 +57,7 @@ const EditProfile = ({ setActive, active }) => {
                 </>
             }
             <MultipleImageInput name="image" label={i18n?.t('Image')} />
-            <Button className="mt-4" type="primary"> {i18n?.t('Submit')} </Button>
+            <Button className="mt-4" type="primary"> {i18n?.t('Update')} </Button>
         </Form>
     );
 }

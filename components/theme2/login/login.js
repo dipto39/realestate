@@ -119,7 +119,7 @@ function LoginC() {
 
             <button className='bg-primary rounded-md text-white my-5 w-1/2 cursor-pointer relative h-10' >
               {loadingRequest ?
-                <span className="absolute -top-4 left-[35%]">
+                <span className="absolute -top-4 left-[20%]">
                   <InfinitySpin
                     //@ts-ignore
                     visible={true}

@@ -19,6 +19,7 @@ const Page = ({ params }) => {
 
     useEffect(() => {
         getData({ _id: params.id })
+
     }, [data?._id])
 
     return (

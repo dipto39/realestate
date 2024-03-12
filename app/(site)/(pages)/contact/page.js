@@ -20,7 +20,9 @@ function ContactUs() {
     return (
         <>
             <Banner title={i18n?.t('Contact Us')} />
-            <Contact />
+            <div className='flex justify-center items-center'>
+                <Contact />
+            </div>
             <Mapp about={about} />
         </>
     );
