@@ -14,7 +14,6 @@ import { useI18n } from '../../../app/providers/i18n';
 const EditProfile = ({ setActive, active }) => {
     const [form] = Form.useForm();
     const { user, getUser } = useUser()
-    console.log("🚀 ~ EditProfile ~ user:", user)
     const { push } = useRouter()
     const i18n = useI18n()
 

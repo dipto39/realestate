@@ -173,8 +173,6 @@ const HomePageSetting = ({ slug }) => {
                             values.explore_places.explore_place_three.image = data;
                         }
 
-                        console.log("images", values.hero_section_image);
-
 
                         let formData = new FormData();
 

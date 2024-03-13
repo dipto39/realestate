@@ -107,7 +107,7 @@ const UserProfile = () => {
                                     </li>
                                     <li>
                                         <h2 className="text-base font-normal opacity-60 mb-3">{i18n?.t('Image')}</h2>
-                                        <Image src={user?.image} height={100} width={100} alt="profile" className="rounded-full w-20 h-20 " />
+                                       { user?.image && <Image src={user?.image} height={100} width={100} alt="profile" className="rounded-full w-20 h-20 " />}
                                     </li>
                                     <li>
                                         <h2 className="text-base font-normal opacity-60 mb-1">{i18n?.t('Phone')}</h2>

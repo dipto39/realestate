@@ -5,7 +5,6 @@ import { useI18n } from '../../../app/providers/i18n';
 import { useProperty } from '../../../app/contexts/property';
 
 const Places = ({ theme1, jsonData }) => {
-    console.log("🚀 ~ Places ~ jsonData:", jsonData)
     const { setSearch, search } = useProperty();
     const i18n = useI18n();
     return (

@@ -180,12 +180,7 @@ const Hero = ({ home3, jsonData }) => {
                 <div className={`w-full rounded-md p-2 lg:p-5 text-white shadow-md ${home3 ? 'lg:w-[75%] bg-[#365C70] bg-gradient-to-b from-[#668391] to-[#184359]' : 'lg:w-[75%] bg-[#365C70] bg-opacity-70'}`}>
                     <div className=''>
                         <Form layout='vertical' autoComplete='off' onFinish={(values) => {
-                            console.log(values, type)
-                            // getData({
-                            //     search: values.location || values.city || values.country
-                            // })
-                            // { (values?.location || values?.city || values?.country) && router.push('/property') }
-                            // setSearch(!search)
+                            
                             getData({
                                 ...values,
                                 type: type

@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
+    product_mode: "demo",
+    // product_mode: "production",
     backend_url:
       process.env.NODE_ENV === "production"
         ? "https://realstatelaravel.appstick.com.bd/"

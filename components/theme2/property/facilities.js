@@ -62,7 +62,6 @@ const Facilities = ({ singleData }) => {
 export default Facilities;
 
 const FacilitiesItem = ({ title, value, icon }) => {
-    console.log("🚀 ~ FacilitiesItem ~ title:", title)
     return (
         <div className='h-full w-full rounded-md bg-white transition-shadow delay-100 ease-in-out hover:shadow-xl py-8'>
             <div className='flex h-full  w-full flex-col items-center justify-center'>

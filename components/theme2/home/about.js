@@ -13,7 +13,6 @@ import Btn from '../../common/btn/btn';
 const About = () => {
     const { search, setSearch } = useProperty();
     const [about, getAbout] = useFetch(fetchSinglePage, {}, false)
-    console.log("🚀 ~ About ~ about:", about)
     const i18n = useI18n();
     useEffect(() => {
         getAbout({
@@ -22,7 +21,6 @@ const About = () => {
     }, [])
 
     const jsonData = JSON.parse(about?.content || '{}')
-    console.log("🚀 ~ About ~ jsonData:", jsonData)
 
     return (
         <div className='aboutus relative py-20 md:py-32'>

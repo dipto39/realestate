@@ -1,16 +1,8 @@
 import React from 'react';
 import { FaAward } from 'react-icons/fa';
 
-// const jsonData = JSON.parse(about?.content || "{}")
-
-// const aboutImage1 = jsonData?.about_us?.about_us_image_1;
-//   const aboutImage2 = jsonData?.about_us?.about_us_image_2;
-
-//   const aboutImgUrl = aboutImage1 && aboutImage1[0].url ? aboutImage1[0].url : aboutImage1;
-//   const aboutImgUrl2 = aboutImage2 && aboutImage2[0].url ? aboutImage2[0].url : aboutImage2;
 
 const Timeline = ({ jsonData }) => {
-    console.log("🚀 ~ Timeline ~ jsonData:", jsonData)
     return (
         <section className='relative py-20'>
             <div className="absolute top-5 left-1 -z-10">

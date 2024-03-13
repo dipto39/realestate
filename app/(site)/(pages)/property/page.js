@@ -31,11 +31,12 @@ const Property = () => {
                                     : loading ? <Spin size="large" className='col-span-2 mx-auto' /> : <p className='text-center header_3 py-6 col-span-2'>{i18n?.t('Property Not Found!!!')}</p>
                                 }
                             </div>
+                            <div className='flex justify-end mt-20'>
+                                <FrontPagination totalPages={data?.totalPages} page={data?.page} total={data?.totalDocs} limit={data?.limit} onPageChange={(page) => getData({ "page": page })} />
+                            </div>
                         </div>
                     </div>
-                    <div className='flex justify-end mt-20'>
-                        <FrontPagination totalPages={data?.totalPages} page={data?.page} total={data?.totalDocs} limit={data?.limit} onPageChange={(page) => getData({ "page": page })} />
-                    </div>
+
                 </div>
             </div>
         </>

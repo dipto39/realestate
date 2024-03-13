@@ -16,7 +16,6 @@ const OtherProviderManageEmail = () => {
     const [loadingSpinner, setLoadSpinner] = useState(false);
     const [checkedValue, setCheckedValue] = useState(false);
     const [settings, getSettings] = useFetch(fetchEmailSettings)
-    console.log("🚀 ~ SendGridManageEmail ~ settings:", settings)
 
 
     // form data loading, if exist

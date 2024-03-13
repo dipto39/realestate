@@ -121,7 +121,6 @@ const AdminPricingPlan = () => {
                             is_active: is_active || form.getFieldValue('is_active'),
                             _id: isEdit && subscriptionId || undefined
                         }
-                        console.log('payload', payload)
                         return useAction(
                             isEdit ?
                                 postSubscription :

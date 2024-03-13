@@ -3,8 +3,8 @@ import Providers from "../providers/userProvider"
 import "./styles/app.scss"
 
 export const metadata = {
-    title: "HomeStick Real State",
-    description: "Manage your HomeStick Real State with ease",
+    title: "HomeStick Real Estate",
+    description: "Manage your HomeStick Real Estate with ease",
 };
 
 const RootLayout = ({ children }) => {

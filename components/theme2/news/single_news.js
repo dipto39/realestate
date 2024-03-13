@@ -21,7 +21,6 @@ function Single_news({ data, url }) {
   const [formCommentReply] = Form.useForm();
   const [limit, setLimit] = useState(5)
   const [comments, getComments] = useFetch(blogComments, { limit }, false);
-  console.log("🚀 ~ Single_news ~ comments:", comments)
   const [loading, setLoading] = useState(false);
   const [blogCommentId, setBlogCommentId] = useState('');
   const [showId, setShowId] = useState("");

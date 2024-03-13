@@ -12,8 +12,6 @@ const EditAdminProperty = ({ params }) => {
     const [selectedCountry, setSelectedCountry] = useState('')
     const [isEdit, setIsEdit] = useState(true)
 
-    console.log('data', data)
-
     useEffect(() => {
         getData({ _id: params?._id });
         if (data) {

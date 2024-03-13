@@ -36,7 +36,6 @@ const data = [
 
 const Review = ({singleData}) => {
     const [review, getReview] = useFetch(getPropertyReview);
-    console.log("🚀 ~ Review ~ review:", review)
     const i18n = useI18n();
     useEffect(() => {
         getReview({

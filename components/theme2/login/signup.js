@@ -59,7 +59,6 @@ function Signup() {
           <Form
             form={form}
             onFinish={async (values) => {
-              // return console.log("values", values)
               if (!!values?.email) {
                 setEmail(values?.email)
                 const { error, msg, data } = await sendOtp({ email: values?.email, phone: values?.phone, action: 'registration' });
@@ -206,8 +205,6 @@ function Signup() {
                     otp: values?.otp,
                   }
                   const { error, msg, data } = await postRegister(payload);
-                  console.log("🚀 ~ data:", data)
-                  console.log("🚀 ~ error:", error)
                   if (error) {
                     return message.error(msg);
                   } else {

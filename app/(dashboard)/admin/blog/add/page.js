@@ -34,7 +34,6 @@ export const BlogForm = ({ form }) => {
     const i18n = useI18n();
     const onFinish = (values) => {
         values.image = values?.image[0]?.originFileObj;
-        // return console.log(values);
         return useAction(
             postBlog,
             {

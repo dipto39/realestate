@@ -172,13 +172,7 @@ export default function AddProperty({ setActive }) {
                         property_image: item?.property_image
                     }))
                 }
-                // return useAction(
-                //     postProperty,
-                //     payload,
-                //     () => {
-                //         push('/admin/property')
-                //     }
-                // );
+                
                 if (user?.activeSubscription?.active) {
                     await postProperty(payload).then(({ data, error, msg }) => {
                         if (error === false) {
@@ -352,9 +346,9 @@ export default function AddProperty({ setActive }) {
                     </div>
                     <div className=''>
                         <div className='flex items-center justify-between pb-1'>
-                            <p className='paragraph_1 text-dark_text '>{i18n?.t('Total Garage')}</p>
+                            <p className='paragraph_1 text-dark_text '>{i18n?.t('Total Garage')} <span className='text-primary'>*</span></p> 
                         </div>
-                        <FormInput name={'garage'} type={'number'}
+                        <FormInput name={'garage'} type={'number'} required={true}
                             rules={[
                                 () => ({
                                     validator(_, value) {
@@ -378,9 +372,9 @@ export default function AddProperty({ setActive }) {
                     </div>
                     <div className=''>
                         <div className='flex items-center justify-between pb-1'>
-                            <p className='paragraph_1 text-dark_text '>{i18n?.t('Total Kitchen')}</p>
+                            <p className='paragraph_1 text-dark_text '>{i18n?.t('Total Kitchen')} <span className='text-primary'>*</span></p> 
                         </div>
-                        <FormInput name={'kitchen'} type={'number'}
+                        <FormInput name={'kitchen'} type={'number'} required={true}
                             rules={[
                                 () => ({
                                     validator(_, value) {
@@ -570,7 +564,7 @@ export default function AddProperty({ setActive }) {
                                             })
                                             ]}></FormInput>
                                         </div>
-                                        {fields.length > 1 ? (
+                                        {fields.length ? (
                                             <MinusCircleOutlined
                                                 className="dynamic-delete-button"
                                                 onClick={() => remove(index)}
@@ -614,7 +608,7 @@ export default function AddProperty({ setActive }) {
                                             </div>
                                             <MultipleImageInput name={[name, 'property_image']}></MultipleImageInput>
                                         </div>
-                                        {fields.length > 1 ? (
+                                        {fields.length ? (
                                             <MinusCircleOutlined
                                                 className="dynamic-delete-button"
                                                 onClick={() => remove(index)}

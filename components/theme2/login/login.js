@@ -15,6 +15,8 @@ function LoginC() {
   const [loadingRequest, setLoadingRequest] = useState(false)
   const [error, setError] = useState(null)
   const { getUser, user, setActive } = useUser()
+  const [form] = Form.useForm();
+
   const i18n = useI18n();
   const onChange = e => {
     setValue(e.target.value);
@@ -53,6 +55,27 @@ function LoginC() {
     }
   }
 
+  const handleFormValue = (e) => {
+    console.log(e.target.innerText)
+    switch (e.target.innerText) {
+      case "Admin":
+        return form.setFieldsValue({
+          email: "admin@gmail.com",
+          password: "123456",
+        });
+      case "User":
+        return form.setFieldsValue({
+          email: "user@gmail.com",
+          password: "123456",
+        });
+      case "Agent":
+        return form.setFieldsValue({
+          email: "agent@gmail.com",
+          password: "123456",
+        });
+    }
+  };
+
   return (
     <section className="relative py-36 ">
       <div className="absolute top-5 left-5">
@@ -76,18 +99,44 @@ function LoginC() {
           <p className="header_7 text-secondary_text">
             {i18n?.t('Please enter your account details to continue.')}
           </p>
-
-          <Form layout="vertical" onFinish={handleSubmit}>
-            <div className="md:flex-row flex flex-col justify-start items-center text-center my-7">
-              <Radio.Group onChange={onChange} value={value} className='text-primary'>
-                <Radio className='paragraph_5 ' value={"gmail"}>
-                  {i18n?.t('Sign in with Gmail')}
-                </Radio>
-                <Radio className='paragraph_5 ' value={"phone"}>
-                  {i18n?.t('Sign in with Phone')}
-                </Radio>
-              </Radio.Group>
+          {
+            process.env.product_mode === "demo" &&
+            <div className="flex items-start font-medium text-lg gap-3 my-4">
+              <button
+                onClick={(e) => handleFormValue(e)}
+                className="focus:text-primary border-2 border-primary hover:bg-main border-opacity-30 px-2 py-1 rounded-md w-20"
+              >
+                Admin
+              </button>
+              <button
+                onClick={(e) => handleFormValue(e)}
+                className="focus:text-primary border-2 border-primary hover:bg-main border-opacity-30 px-2 py-1 rounded-md w-20"
+              >
+                User
+              </button>
+              <button
+                onClick={(e) => handleFormValue(e)}
+                className="focus:text-primary border-2 border-primary hover:bg-main border-opacity-30 px-2 py-1 rounded-md w-20"
+              >
+                Agent
+              </button>
             </div>
+          }
+          <Form form={form} layout="vertical" onFinish={handleSubmit}>
+
+            {
+              !process.env.product_mode === "demo" &&
+              <div className="md:flex-row flex flex-col justify-start items-center text-center my-7">
+                <Radio.Group onChange={onChange} value={value} className='text-primary'>
+                  <Radio className='paragraph_5 ' value={"gmail"}>
+                    {i18n?.t('Sign in with Gmail')}
+                  </Radio>
+                  <Radio className='paragraph_5 ' value={"phone"}>
+                    {i18n?.t('Sign in with Phone')}
+                  </Radio>
+                </Radio.Group>
+              </div>
+            }
 
             {
               value === 'gmail' &&
@@ -146,7 +195,7 @@ function LoginC() {
 
         </div>
       </div>
-    </section >
+    </section>
   )
 }
 

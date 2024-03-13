@@ -3,7 +3,6 @@ import React from 'react'
 function Mapp({about}) {
 
   const jsonData = JSON.parse(about?.content || '{}')
-  console.log("🚀 ~ Mapp ~ jsonData:", jsonData)
 
   return (
     <section className='pb-10 md:pb-20'>
